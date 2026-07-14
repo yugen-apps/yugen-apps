@@ -11,7 +11,7 @@
       },
       {
         "type": "GitHub",
-        "value": "yugen-apps/Yugen.DJ"
+        "value": "yugen-apps/yugen-dj"
       }
     ]
   },
@@ -27,7 +27,7 @@
       },
       {
         "type": "GitHub",
-        "value": "yugen-apps/Yugen.Mosaic"
+        "value": "yugen-apps/yugen-mosaic"
       }
     ]
   },
@@ -39,11 +39,11 @@
     "links": [
       {
         "type": "Docs",
-        "value": "https://yugen-apps.github.io/Yugen.Toolkit.Docs/"
+        "value": "https://yugen-apps.github.io/yugen-toolkit-docs/"
       },
       {
         "type": "GitHub",
-        "value": "yugen-apps/Yugen.Toolkit"
+        "value": "yugen-apps/yugen-toolkit"
       },
       {
         "type": "Nuget",
@@ -59,7 +59,7 @@
     "links": [
       {
         "type": "Walkthroughs",
-        "value": "https://yugen-apps.github.io/Yugen.Toolkit.Docs/articles/walkthroughs/index.html"
+        "value": "https://yugen-apps.github.io/yugen-toolkit-docs/articles/walkthroughs/index.html"
       }
     ]
   },
