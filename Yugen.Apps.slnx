@@ -1,0 +1,17 @@
+<Solution>
+  <Configurations>
+    <Platform Name="ARM64" />
+    <Platform Name="x64" />
+  </Configurations>
+  <Folder Name="/.github/">
+    <File Path=".github/workflows/yugen-apps-web-cicd.yml" />
+    <File Path=".github/workflows/yugen-apps-winui-cicd.yml" />
+    <File Path="README.md" />
+  </Folder>
+  <Project Path="Yugen.Apps.Web/Yugen.Apps.Web.csproj" />
+  <Project Path="Yugen.Apps.WinUi/Yugen.Apps.WinUi.csproj">
+    <Platform Solution="*|ARM64" Project="ARM64" />
+    <Platform Solution="*|x64" Project="x64" />
+    <Deploy />
+  </Project>
+</Solution>

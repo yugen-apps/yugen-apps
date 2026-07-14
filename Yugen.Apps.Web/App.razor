@@ -1,0 +1,11 @@
+﻿<Router AppAssembly="@typeof(App).Assembly"
+        NotFoundPage="typeof(Yugen.Apps.Web.Components.Pages.NotFound)">
+    <Found Context="routeData">
+        <RouteView RouteData="@routeData" 
+                   DefaultLayout="@typeof(Yugen.Apps.Web.Components.Layout.MainLayout)" />
+        <FocusOnNavigate RouteData="@routeData" 
+                         Selector="h1" />
+    </Found>
+</Router>
+
+<BytexDigital.Blazor.Components.CookieConsent.CookieConsentHandler />
