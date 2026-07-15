@@ -1,4 +1,3 @@
-using BytexDigital.Blazor.Components.CookieConsent;
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using Microsoft.Extensions.DependencyInjection;
@@ -6,6 +5,7 @@ using MudBlazor.Services;
 using System;
 using System.Net.Http;
 using System.Threading.Tasks;
+using Yugen.Apps.Shared.ProjectsService;
 
 namespace Yugen.Apps.Web;
 
@@ -19,6 +19,7 @@ public class Program
 
 		builder.Services.AddMudServices();
 		builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
+		builder.Services.AddSingleton<IProjectsService, ProjectsService>();
 
 		builder.Services.AddCookieConsent(o =>
 		{

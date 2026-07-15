@@ -19,14 +19,14 @@
                             <MudText Typo="Typo.body1">@project.Title</MudText>
                         </CardHeaderContent>
                     </MudCardHeader>
-                    <MudCardMedia Image="@($"assets/img/cards/{project.ImageSrc}")"
+                    <MudCardMedia Image="@project.ImageSrc"
                                   Height="200" />
                     <MudCardActions>
                         @foreach (var link in project.Links)
                         {
                             <MudIconButton Class="ma-1"
-                                           Href="@GetLink(link.Type, link.value)"
-                                           Icon="@GetIconName(link.Type)"
+                                           Href="@link.Href"
+                                           Icon="@link.IconName"
                                            Target="_blank"
                                            Variant="Variant.Filled" />
                         }

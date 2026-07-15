@@ -1,4 +1,6 @@
-# yugen-apps-web
+# yugen-apps
+
+## web
 
 * dotnet publish D:\yugen-web\Yugen.Apps.Web --configuration Release --output D:\yugen-web\Yugen.Apps.Web\bin\myapp
 * dotnet serve -o -d D:\yugen-web\Yugen.Apps.Web\bin\myapp\wwwroot
