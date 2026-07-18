@@ -4,13 +4,15 @@ namespace Yugen.Apps.Shared.ProjectsService;
 
 public class ProjectDto
 {
-	public int Id { get; set; }
+    public string Category { get; set; }
 
-	public string ImageSrc { get; set; }
+    public string Description { get; set; }
 
-	public string Title { get; set; }
+    public int Id { get; set; }
 
-	public string Description { get; set; }
+    public string ImageSrc { get; set; }
 
-	public List<LinkDto> Links { get; set; }
+    public List<LinkDto> Links { get; set; }
+
+    public string Title { get; set; }
 }
