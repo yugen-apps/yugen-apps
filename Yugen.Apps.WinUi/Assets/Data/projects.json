@@ -64,7 +64,7 @@
   },
   {
     "id": 4,
-    "imageSrc": "yugen.png",
+    "imageSrc": "Walkthroughs.png",
     "title": "Walkthroughs",
     "category": "External",
     "description": "",
@@ -78,7 +78,7 @@
   },
   {
     "id": 5,
-    "imageSrc": "yugenRed.png",
+    "imageSrc": "yugen.png",
     "title": "About Me",
     "category": "External",
     "description": "",

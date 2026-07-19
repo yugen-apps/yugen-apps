@@ -9,27 +9,18 @@ using Yugen.Apps.WinUi.Views.Main;
 
 namespace Yugen.Apps.WinUi;
 
-public partial class MainViewModel : ObservableObject
+public partial class MainViewModel(IProjectsService projectsService) : ObservableObject
 {
-    private readonly IProjectsService _projectsService;
-
-    public MainViewModel(IProjectsService projectsService)
-    {
-        _projectsService = projectsService;
-    }
+    private readonly IProjectsService _projectsService = projectsService;
 
     [ObservableProperty]
     public partial List<CategoryObservableObject> Categories { get; set; } = [];
-
-    [ObservableProperty]
-    public partial List<ProjectObservableObject> Projects { get; set; } = [];
 
     [RelayCommand]
     private async Task Load()
     {
         var filePath = $"{Package.Current.InstalledLocation.Path}\\Assets\\Data\\projects.json";
         var projectDtos = _projectsService.GetFromPath(filePath);
-        Projects = projectDtos.Select(dto => new ProjectObservableObject(dto)).ToList();
         Categories = projectDtos.Select(dto => new ProjectObservableObject(dto))
             .GroupBy(p => p.Category)
             .Select(c => new CategoryObservableObject { Title = c.Key, Projects = c.ToList() })

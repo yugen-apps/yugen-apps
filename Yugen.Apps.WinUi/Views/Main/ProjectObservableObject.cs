@@ -12,7 +12,7 @@ public partial class ProjectObservableObject : ObservableObject
     public ProjectObservableObject(ProjectDto model)
     {
         _model = model;
-        ImageSrc = $"/Assets/Img/Cards/{_model.ImageSrc}";
+        ImageSrc = $"ms-appx:///Assets/Img/Cards/{_model.ImageSrc}";
         Links = model.Links.Select(link => new LinkObservableObject(link)).ToList();
     }
 
