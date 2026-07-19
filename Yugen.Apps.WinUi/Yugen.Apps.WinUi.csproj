@@ -32,6 +32,21 @@
 	  <Content Remove="Assets\Store\Wide310x150Logo.scale-400.png" />
 	</ItemGroup>
 	<ItemGroup>
+	  <None Remove="Assets\Img\Icons\Discord_Dark.svg" />
+	  <None Remove="Assets\Img\Icons\Discord_Light.svg" />
+	  <None Remove="Assets\Img\Icons\Docs_Dark.svg" />
+	  <None Remove="Assets\Img\Icons\Docs_Light.svg" />
+	  <None Remove="Assets\Img\Icons\Facebook_Dark.svg" />
+	  <None Remove="Assets\Img\Icons\Facebook_Light.svg" />
+	  <None Remove="Assets\Img\Icons\GitHub_Dark.svg" />
+	  <None Remove="Assets\Img\Icons\GitHub_Light.svg" />
+	  <None Remove="Assets\Img\Icons\LinkedIn_Dark.svg" />
+	  <None Remove="Assets\Img\Icons\LinkedIn_Light.svg" />
+	  <None Remove="Assets\Img\Icons\NuGet_Dark.svg" />
+	  <None Remove="Assets\Img\Icons\NuGet_Light.svg" />
+	  <None Remove="Assets\Img\Icons\Website_Dark.svg" />
+	  <None Remove="Assets\Img\Icons\Website_Light.svg" />
+	  <None Remove="Assets\Img\Icons\X_Dark.svg" />
 	  <None Remove="Views\Main\MainWindowV3.xaml" />
 	  <None Remove="Views\Main\ProjectTileUserControl.xaml" />
 	</ItemGroup>
@@ -101,6 +116,14 @@
 	</ItemGroup>
 	<ItemGroup>
 	  <None Include="C:\Users\rathm\source\repos\yugen-apps\Yugen.Apps.WinUi\.editorconfig" />
+	</ItemGroup>
+	<ItemGroup>
+	  <Content Update="Assets\Img\Icons\Docs_Dark.svg">
+	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+	  </Content>
+	  <Content Update="Assets\Img\Icons\Docs_Light.svg">
+	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+	  </Content>
 	</ItemGroup>
 	<ItemGroup>
 	  <Page Update="Views\Main\ProjectTileUserControl.xaml">

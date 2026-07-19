@@ -1,6 +1,9 @@
 using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
 using FluentIcons.Common;
-using System.ComponentModel;
+using System;
+using System.Threading.Tasks;
+using Windows.System;
 using Yugen.Apps.Shared.ProjectsService;
 
 namespace Yugen.Apps.WinUi.Views.Main;
@@ -13,20 +16,6 @@ public partial class LinkObservableObject : ObservableObject
     {
         _model = model;
         Href = ProjectsHelper.GetHref(_model.Type, _model.Value);
-        IconName = _model.Type switch
-        {
-            //"Discord" => Icon.Discord,
-            "Docs" => Icon.Book,
-            //"Facebook" => Icon.Facebook,
-            //"GitHub" => Icon.GitHub,
-            //"LinkedIn" => Icon.LinkedIn,
-            //"Nuget" => Icon.Microsoft,
-            //"Store" => Icon.MicrosoftWindows,
-            "Walkthroughs" => Icon.Question,
-            "Website" => Icon.Link,
-            //"X" => Icon.X,
-            _ => Icon.Link,
-        };
     }
 
     public string CommandText => _model.CommandText;
@@ -42,4 +31,16 @@ public partial class LinkObservableObject : ObservableObject
     public string Type => _model.Type;
 
     public string Value => _model.Value;
+
+    [RelayCommand]
+    private async Task LaunchAsync()
+    {
+        try
+        {
+            await Launcher.LaunchUriAsync(new Uri(Href));
+        }
+        catch
+        {
+        }
+    }
 }

@@ -10,15 +10,15 @@
     <UserControl.Resources>
         <DataTemplate x:Key="AccentLinkDataTemplate"
                       x:DataType="local:LinkObservableObject">
-            <Button BorderThickness="1"
+            <Button Command="{x:Bind LaunchCommand}"
                     ToolTipService.ToolTip="{x:Bind Description}">
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition />
                         <ColumnDefinition Width="Auto" />
                     </Grid.ColumnDefinitions>
-                    <ic:FluentIcon Icon="{x:Bind IconName}"
-                                   IconSize="Size24" />
+                    <ImageIcon Width="20"
+                               localXaml:ThemeAwareIcon.IconId="{x:Bind Type}" />
                     <TextBlock Grid.Column="1"
                                Margin="8,0"
                                Text="{x:Bind CommandText}" />
@@ -27,10 +27,10 @@
         </DataTemplate>
         <DataTemplate x:Key="DefaultLinkDataTemplate"
                       x:DataType="local:LinkObservableObject">
-            <Button BorderThickness="1"
+            <Button Command="{x:Bind LaunchCommand}"
                     ToolTipService.ToolTip="{x:Bind Description}">
-                <ic:FluentIcon Icon="{x:Bind IconName}"
-                               IconSize="Size24" />
+                <ImageIcon Width="20"
+                           localXaml:ThemeAwareIcon.IconId="{x:Bind Type}" />
             </Button>
         </DataTemplate>
         <localXaml:LinkObservableObjectDataTemplateSelector x:Key="LinkDataTemplateSelector"
@@ -40,56 +40,61 @@
 
     <Grid x:Name="TileRoot"
           MinWidth="320"
-          Padding="16,12"
-          AutomationProperties.Name="{x:Bind Project.Title}"
           Background="{ThemeResource CardBackgroundFillColorDefaultBrush}"
           BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}"
           BorderThickness="1"
-          ColumnSpacing="16"
-          CornerRadius="8"
-          RowSpacing="8">
+          CornerRadius="8">
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
+            <RowDefinition />
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto" />
-            <ColumnDefinition />
-        </Grid.ColumnDefinitions>
-        <Image x:Name="TileImage"
-               Grid.RowSpan="3"
-               MaxWidth="96"
-               Source="{x:Bind Project.ImageSrc}"
-               Stretch="Uniform" />
-        <TextBlock Grid.Column="1"
-                   Margin="0,0,16,0"
-                   Style="{StaticResource SubtitleTextBlockStyle}"
-                   Text="{x:Bind Project.Title, Mode=OneWay}" />
-        <TextBlock Grid.Row="1"
-                   Grid.Column="1"
-                   Opacity=".7"
-                   Style="{StaticResource CaptionTextBlockStyle}"
-                   Text="{x:Bind Project.Category, Mode=OneWay}"
-                   ToolTipService.ToolTip="{x:Bind Project.Description, Mode=OneWay}" />
-        <TextBlock Grid.Row="2"
-                   Grid.Column="1"
-                   MaxWidth="240"
-                   MaxHeight="64"
-                   Text="{x:Bind Project.Description, Mode=OneWay}"
-                   TextTrimming="CharacterEllipsis"
-                   TextWrapping="WrapWholeWords"
-                   ToolTipService.ToolTip="{x:Bind Project.Description, Mode=OneWay}" />
-        <ItemsRepeater Grid.Row="3"
-                       Grid.ColumnSpan="2"
-                       Margin="0,16,0,0"
-                       ItemTemplate="{StaticResource LinkDataTemplateSelector}"
-                       ItemsSource="{x:Bind Project.Links}">
-            <ItemsRepeater.Layout>
-                <StackLayout Orientation="Horizontal"
-                             Spacing="8" />
-            </ItemsRepeater.Layout>
-        </ItemsRepeater>
+        <Grid Padding="16,12"
+              AutomationProperties.Name="{x:Bind Project.Title}"
+              ColumnSpacing="16"
+              RowSpacing="8">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <Image x:Name="TileImage"
+                   Grid.RowSpan="3"
+                   MaxWidth="96"
+                   Source="{x:Bind Project.ImageSrc}"
+                   Stretch="Uniform" />
+            <TextBlock Grid.Column="1"
+                       Margin="0,0,16,0"
+                       Style="{StaticResource SubtitleTextBlockStyle}"
+                       Text="{x:Bind Project.Title, Mode=OneWay}" />
+            <TextBlock Grid.Row="1"
+                       Grid.Column="1"
+                       Opacity=".7"
+                       Style="{StaticResource CaptionTextBlockStyle}"
+                       Text="{x:Bind Project.Category, Mode=OneWay}"
+                       ToolTipService.ToolTip="{x:Bind Project.Description, Mode=OneWay}" />
+            <TextBlock Grid.Row="2"
+                       Grid.Column="1"
+                       MaxWidth="240"
+                       MaxHeight="64"
+                       Text="{x:Bind Project.Description, Mode=OneWay}"
+                       TextTrimming="CharacterEllipsis"
+                       TextWrapping="WrapWholeWords"
+                       ToolTipService.ToolTip="{x:Bind Project.Description, Mode=OneWay}" />
+        </Grid>
+        <Border Grid.Row="1"
+                Padding="16,12"
+                Background="{ThemeResource CardBackgroundFillColorSecondaryBrush}">
+            <ItemsRepeater ItemTemplate="{StaticResource LinkDataTemplateSelector}"
+                           ItemsSource="{x:Bind Project.Links}">
+                <ItemsRepeater.Layout>
+                    <StackLayout Orientation="Horizontal"
+                                 Spacing="8" />
+                </ItemsRepeater.Layout>
+            </ItemsRepeater>
+        </Border>
     </Grid>
 </UserControl>
