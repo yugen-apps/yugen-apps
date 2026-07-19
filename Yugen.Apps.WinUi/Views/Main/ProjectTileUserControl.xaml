@@ -7,6 +7,7 @@
              xmlns:localXaml="using:Yugen.Apps.WinUi.Views.Xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d">
+
     <UserControl.Resources>
         <DataTemplate x:Key="AccentLinkDataTemplate"
                       x:DataType="local:LinkObservableObject">
@@ -63,7 +64,7 @@
             </Grid.ColumnDefinitions>
             <Image x:Name="TileImage"
                    Grid.RowSpan="3"
-                   MaxWidth="96"
+                   MaxWidth="92"
                    Source="{x:Bind Project.ImageSrc}"
                    Stretch="Uniform" />
             <TextBlock Grid.Column="1"

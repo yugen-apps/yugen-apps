@@ -2,7 +2,6 @@
 using Microsoft.UI.Xaml;
 using System;
 using Yugen.Apps.Shared.ProjectsService;
-using Yugen.Apps.WinUi.Views.Main;
 
 namespace Yugen.Apps.WinUi;
 
@@ -31,7 +30,7 @@ public partial class App : Application
     /// <param name="args">Details about the launch request and process.</param>
     protected override void OnLaunched(LaunchActivatedEventArgs args)
     {
-        _window = new MainWindowV3();
+        _window = new MainWindow();
         _window.Activate();
     }
 
