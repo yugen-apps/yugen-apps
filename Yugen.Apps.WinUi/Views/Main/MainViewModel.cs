@@ -9,9 +9,14 @@ using Yugen.Apps.WinUi.Views.Main;
 
 namespace Yugen.Apps.WinUi;
 
-public partial class MainViewModel(IProjectsService projectsService) : ObservableObject
+public partial class MainViewModel : ObservableObject
 {
-    private readonly IProjectsService _projectsService = projectsService;
+    private readonly IProjectsService _projectsService;
+
+    public MainViewModel(IProjectsService projectsService)
+    {
+        _projectsService = projectsService;
+    }
 
     [ObservableProperty]
     public partial List<CategoryObservableObject> Categories { get; set; } = [];
