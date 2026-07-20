@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
 		<OutputType>WinExe</OutputType>
 		<TargetFramework>net10.0-windows10.0.26100.0</TargetFramework>
@@ -17,19 +17,69 @@
 	</PropertyGroup>
 	<ItemGroup>
 	  <Content Remove="Assets\Store\BadgeLogo.scale-400.png" />
+	  <Content Remove="Assets\Store\LargeTile.scale-100.png" />
+	  <Content Remove="Assets\Store\LargeTile.scale-125.png" />
+	  <Content Remove="Assets\Store\LargeTile.scale-150.png" />
+	  <Content Remove="Assets\Store\LargeTile.scale-200.png" />
 	  <Content Remove="Assets\Store\LargeTile.scale-400.png" />
+	  <Content Remove="Assets\Store\SmallTile.scale-100.png" />
+	  <Content Remove="Assets\Store\SmallTile.scale-125.png" />
+	  <Content Remove="Assets\Store\SmallTile.scale-150.png" />
+	  <Content Remove="Assets\Store\SmallTile.scale-200.png" />
 	  <Content Remove="Assets\Store\SmallTile.scale-400.png" />
+	  <Content Remove="Assets\Store\SplashScreen.scale-100.png" />
+	  <Content Remove="Assets\Store\SplashScreen.scale-125.png" />
+	  <Content Remove="Assets\Store\SplashScreen.scale-150.png" />
 	  <Content Remove="Assets\Store\SplashScreen.scale-400.png" />
+	  <Content Remove="Assets\Store\Square150x150Logo.scale-100.png" />
+	  <Content Remove="Assets\Store\Square150x150Logo.scale-125.png" />
+	  <Content Remove="Assets\Store\Square150x150Logo.scale-150.png" />
 	  <Content Remove="Assets\Store\Square150x150Logo.scale-400.png" />
+	  <Content Remove="Assets\Store\Square44x44Logo.altform-lightunplated_targetsize-16.png" />
+	  <Content Remove="Assets\Store\Square44x44Logo.altform-lightunplated_targetsize-24.png" />
 	  <Content Remove="Assets\Store\Square44x44Logo.altform-lightunplated_targetsize-256.png" />
+	  <Content Remove="Assets\Store\Square44x44Logo.altform-lightunplated_targetsize-32.png" />
 	  <Content Remove="Assets\Store\Square44x44Logo.altform-lightunplated_targetsize-48.png" />
+	  <Content Remove="Assets\Store\Square44x44Logo.altform-unplated_targetsize-16.png" />
 	  <Content Remove="Assets\Store\Square44x44Logo.altform-unplated_targetsize-256.png" />
+	  <Content Remove="Assets\Store\Square44x44Logo.altform-unplated_targetsize-32.png" />
 	  <Content Remove="Assets\Store\Square44x44Logo.altform-unplated_targetsize-48.png" />
+	  <Content Remove="Assets\Store\Square44x44Logo.scale-100.png" />
+	  <Content Remove="Assets\Store\Square44x44Logo.scale-125.png" />
+	  <Content Remove="Assets\Store\Square44x44Logo.scale-150.png" />
 	  <Content Remove="Assets\Store\Square44x44Logo.scale-400.png" />
+	  <Content Remove="Assets\Store\Square44x44Logo.targetsize-16.png" />
+	  <Content Remove="Assets\Store\Square44x44Logo.targetsize-24.png" />
 	  <Content Remove="Assets\Store\Square44x44Logo.targetsize-256.png" />
+	  <Content Remove="Assets\Store\Square44x44Logo.targetsize-32.png" />
 	  <Content Remove="Assets\Store\Square44x44Logo.targetsize-48.png" />
+	  <Content Remove="Assets\Store\StoreLogo.scale-125.png" />
+	  <Content Remove="Assets\Store\StoreLogo.scale-150.png" />
+	  <Content Remove="Assets\Store\StoreLogo.scale-200.png" />
 	  <Content Remove="Assets\Store\StoreLogo.scale-400.png" />
+	  <Content Remove="Assets\Store\Wide310x150Logo.scale-100.png" />
+	  <Content Remove="Assets\Store\Wide310x150Logo.scale-125.png" />
+	  <Content Remove="Assets\Store\Wide310x150Logo.scale-150.png" />
 	  <Content Remove="Assets\Store\Wide310x150Logo.scale-400.png" />
+	</ItemGroup>
+	<ItemGroup>
+	  <None Remove="Assets\Img\Icons\Discord_Dark.svg" />
+	  <None Remove="Assets\Img\Icons\Discord_Light.svg" />
+	  <None Remove="Assets\Img\Icons\Docs_Dark.svg" />
+	  <None Remove="Assets\Img\Icons\Docs_Light.svg" />
+	  <None Remove="Assets\Img\Icons\Facebook_Dark.svg" />
+	  <None Remove="Assets\Img\Icons\Facebook_Light.svg" />
+	  <None Remove="Assets\Img\Icons\GitHub_Dark.svg" />
+	  <None Remove="Assets\Img\Icons\GitHub_Light.svg" />
+	  <None Remove="Assets\Img\Icons\LinkedIn_Dark.svg" />
+	  <None Remove="Assets\Img\Icons\LinkedIn_Light.svg" />
+	  <None Remove="Assets\Img\Icons\NuGet_Dark.svg" />
+	  <None Remove="Assets\Img\Icons\NuGet_Light.svg" />
+	  <None Remove="Assets\Img\Icons\Website_Dark.svg" />
+	  <None Remove="Assets\Img\Icons\Website_Light.svg" />
+	  <None Remove="Assets\Img\Icons\X_Dark.svg" />
+	  <None Remove="Assets\Img\Logo-NoBackground.svg" />
+	  <None Remove="Views\Main\ProjectTileUserControl.xaml" />
 	</ItemGroup>
 
 	<!--
@@ -87,4 +137,23 @@
 		<PublishTrimmed Condition="'$(Configuration)' == 'Debug'">False</PublishTrimmed>
 		<PublishTrimmed Condition="'$(Configuration)' != 'Debug'">True</PublishTrimmed>
 	</PropertyGroup>
+	<ItemGroup>
+	  <EditorConfigFiles Remove="C:\Users\rathm\source\repos\yugen-apps\Yugen.Apps.WinUi\.editorconfig" />
+	</ItemGroup>
+	<ItemGroup>
+	  <None Include="C:\Users\rathm\source\repos\yugen-apps\Yugen.Apps.WinUi\.editorconfig" />
+	</ItemGroup>
+	<ItemGroup>
+	  <Content Update="Assets\Img\Icons\Docs_Dark.svg">
+	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+	  </Content>
+	  <Content Update="Assets\Img\Icons\Docs_Light.svg">
+	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+	  </Content>
+	</ItemGroup>
+	<ItemGroup>
+	  <Page Update="Views\Main\ProjectTileUserControl.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </Page>
+	</ItemGroup>
 </Project>

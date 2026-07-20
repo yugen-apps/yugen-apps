@@ -1,0 +1,101 @@
+<UserControl x:Class="Yugen.Apps.WinUi.Views.Main.ProjectTileUserControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:ic="using:FluentIcons.WinUI"
+             xmlns:local="using:Yugen.Apps.WinUi.Views.Main"
+             xmlns:localXaml="using:Yugen.Apps.WinUi.Views.Xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d">
+
+    <UserControl.Resources>
+        <DataTemplate x:Key="AccentLinkDataTemplate"
+                      x:DataType="local:LinkObservableObject">
+            <Button Command="{x:Bind LaunchCommand}"
+                    ToolTipService.ToolTip="{x:Bind Description}">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <ImageIcon Width="20"
+                               localXaml:ThemeAwareIcon.IconId="{x:Bind Type}" />
+                    <TextBlock Grid.Column="1"
+                               Margin="8,0"
+                               Text="{x:Bind CommandText}" />
+                </Grid>
+            </Button>
+        </DataTemplate>
+        <DataTemplate x:Key="DefaultLinkDataTemplate"
+                      x:DataType="local:LinkObservableObject">
+            <Button Command="{x:Bind LaunchCommand}"
+                    ToolTipService.ToolTip="{x:Bind Description}">
+                <ImageIcon Width="20"
+                           localXaml:ThemeAwareIcon.IconId="{x:Bind Type}" />
+            </Button>
+        </DataTemplate>
+        <localXaml:LinkObservableObjectDataTemplateSelector x:Key="LinkDataTemplateSelector"
+                                                            AccentTemplate="{StaticResource AccentLinkDataTemplate}"
+                                                            DefaultTemplate="{StaticResource DefaultLinkDataTemplate}" />
+    </UserControl.Resources>
+
+    <Grid x:Name="TileRoot"
+          MinWidth="320"
+          Background="{ThemeResource CardBackgroundFillColorDefaultBrush}"
+          BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}"
+          BorderThickness="1"
+          CornerRadius="8">
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <Grid Padding="16,12"
+              AutomationProperties.Name="{x:Bind Project.Title}"
+              ColumnSpacing="16"
+              RowSpacing="8">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <Image x:Name="TileImage"
+                   Grid.RowSpan="3"
+                   MaxWidth="92"
+                   Source="{x:Bind Project.ImageSrc}"
+                   Stretch="Uniform" />
+            <TextBlock Grid.Column="1"
+                       Margin="0,0,16,0"
+                       Style="{StaticResource SubtitleTextBlockStyle}"
+                       Text="{x:Bind Project.Title, Mode=OneWay}" />
+            <TextBlock Grid.Row="1"
+                       Grid.Column="1"
+                       Opacity=".7"
+                       Style="{StaticResource CaptionTextBlockStyle}"
+                       Text="{x:Bind Project.Category, Mode=OneWay}"
+                       ToolTipService.ToolTip="{x:Bind Project.Description, Mode=OneWay}" />
+            <TextBlock Grid.Row="2"
+                       Grid.Column="1"
+                       MaxWidth="240"
+                       MaxHeight="64"
+                       Text="{x:Bind Project.Description, Mode=OneWay}"
+                       TextTrimming="CharacterEllipsis"
+                       TextWrapping="WrapWholeWords"
+                       ToolTipService.ToolTip="{x:Bind Project.Description, Mode=OneWay}" />
+        </Grid>
+        <Border Grid.Row="1"
+                Padding="16,12"
+                Background="{ThemeResource CardBackgroundFillColorSecondaryBrush}">
+            <ItemsRepeater ItemTemplate="{StaticResource LinkDataTemplateSelector}"
+                           ItemsSource="{x:Bind Project.Links}">
+                <ItemsRepeater.Layout>
+                    <StackLayout Orientation="Horizontal"
+                                 Spacing="8" />
+                </ItemsRepeater.Layout>
+            </ItemsRepeater>
+        </Border>
+    </Grid>
+</UserControl>
