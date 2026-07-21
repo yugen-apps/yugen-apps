@@ -3,44 +3,47 @@
 <PageTitle>Home</PageTitle>
 
 <MudGrid>
-    @if (projects == null)
+    @if (categories == null)
     {
-        <MudProgressCircular Color="Color.Default" 
+        <MudProgressCircular Color="Color.Default"
                              Indeterminate="true" />
     }
     else
     {
-        @foreach (var project in projects)
+        @foreach (var category in categories)
         {
-            <MudItem xs="12" sm="6" md="4">
-                <MudCard Elevation="8">
-                    <MudCardHeader>
-                        <CardHeaderContent>
-                            <MudText Typo="Typo.body1">@project.Title</MudText>
-                        </CardHeaderContent>
-                    </MudCardHeader>
-                    <MudCardMedia Image="@project.ImageSrc"
-                                  Height="200" />
-                    <MudCardActions>
-                        @foreach (var link in project.Links)
-                        {
-                            <MudIconButton Class="ma-1"
-                                           Href="@link.Href"
-                                           Icon="@link.IconName"
-                                           Target="_blank"
-                                           Variant="Variant.Filled" />
-                        }
+            @foreach (var project in category.Projects)
+            {
+                <MudItem xs="12" sm="6" md="4">
+                    <MudCard Elevation="8">
+                        <MudCardHeader>
+                            <CardHeaderContent>
+                                <MudText Typo="Typo.body1">@project.Title</MudText>
+                            </CardHeaderContent>
+                        </MudCardHeader>
+                        <MudCardMedia Image="@project.ImageSrc"
+                                      Height="200" />
+                        <MudCardActions>
+                            @foreach (var link in project.Links)
+                            {
+                                <MudIconButton Class="ma-1"
+                                               Href="@link.Href"
+                                               Icon="@link.IconName"
+                                               Target="_blank"
+                                               Variant="Variant.Filled" />
+                            }
 
-                        @if(!string.IsNullOrWhiteSpace(project.Description))
-                        {
-                            <MudIconButton OnClick="() => OpenDialogAsync(project.Description)"
-                                           Class="ma-1"
-                                           Icon="@Icons.Material.Filled.Info"
-                                           Variant="Variant.Filled" />
-                        }
-                    </MudCardActions>
-                </MudCard>
-            </MudItem>
+                            @if (!string.IsNullOrWhiteSpace(project.Description))
+                            {
+                                <MudIconButton OnClick="() => OpenDialogAsync(project.Description)"
+                                               Class="ma-1"
+                                               Icon="@Icons.Material.Filled.Info"
+                                               Variant="Variant.Filled" />
+                            }
+                        </MudCardActions>
+                    </MudCard>
+                </MudItem>
+            }
         }
     }
 </MudGrid>

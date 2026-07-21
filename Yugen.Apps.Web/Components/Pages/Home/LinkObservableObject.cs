@@ -4,7 +4,7 @@ using Yugen.Apps.Shared.ProjectsService;
 
 namespace Yugen.Apps.Web.Components.Pages.Home;
 
-public class LinkObservableObject : ObservableObject
+public partial class LinkObservableObject : ObservableObject
 {
     private readonly LinkDto _model;
 

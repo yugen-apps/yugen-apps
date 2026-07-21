@@ -8,10 +8,10 @@ public class ProjectsService : IProjectsService
 {
     private readonly JsonSerializerOptions JsonSerializerOptions = new(JsonSerializerDefaults.Web);
 
-    public List<ProjectDto> GetFromText(string text) =>
-        JsonSerializer.Deserialize<List<ProjectDto>>(text, JsonSerializerOptions) ?? [];
+    public List<CategoryDto> GetFromText(string text) =>
+        JsonSerializer.Deserialize<List<CategoryDto>>(text, JsonSerializerOptions) ?? [];
 
-    public List<ProjectDto> GetFromPath(string path)
+    public List<CategoryDto> GetFromPath(string path)
     {
         //var directory = Directory.GetCurrentDirectory();
         //var path = Path.Combine(directory, fileRelativePath);

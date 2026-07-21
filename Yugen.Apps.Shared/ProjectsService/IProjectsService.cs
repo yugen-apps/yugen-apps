@@ -4,7 +4,7 @@ namespace Yugen.Apps.Shared.ProjectsService;
 
 public interface IProjectsService
 {
-    List<ProjectDto> GetFromText(string text);
+    List<CategoryDto> GetFromText(string text);
 
-    List<ProjectDto> GetFromPath(string path);
+    List<CategoryDto> GetFromPath(string path);
 }

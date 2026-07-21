@@ -5,9 +5,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using Windows.ApplicationModel;
 using Yugen.Apps.Shared.ProjectsService;
-using Yugen.Apps.WinUi.Views.Main;
 
-namespace Yugen.Apps.WinUi;
+namespace Yugen.Apps.WinUi.Views.Main;
 
 public partial class MainViewModel : ObservableObject
 {
@@ -19,16 +18,23 @@ public partial class MainViewModel : ObservableObject
     }
 
     [ObservableProperty]
-    public partial List<CategoryObservableObject> Categories { get; set; } = [];
+    public partial List<CategoryObservableObject> AllCategories { get; set; } = [];
+
+    [ObservableProperty]
+    public partial List<CategoryObservableObject> SelectedCategories { get; set; } = [];
 
     [RelayCommand]
     private async Task Load()
     {
         var filePath = $"{Package.Current.InstalledLocation.Path}\\Assets\\Data\\projects.json";
-        var projectDtos = _projectsService.GetFromPath(filePath);
-        Categories = projectDtos.Select(dto => new ProjectObservableObject(dto))
-            .GroupBy(p => p.Category)
-            .Select(c => new CategoryObservableObject { Title = c.Key, Projects = c.ToList() })
-            .ToList();
+        var categoryDtos = _projectsService.GetFromPath(filePath);
+        AllCategories = categoryDtos.Select(x => x.ToCategoryObservableObject()).ToList();
+        SelectorBarSelectionChangedCommand.Execute(0);
+    }
+
+    [RelayCommand]
+    private async Task SelectorBarSelectionChanged(int index)
+    {
+        SelectedCategories = [AllCategories[index]];
     }
 }

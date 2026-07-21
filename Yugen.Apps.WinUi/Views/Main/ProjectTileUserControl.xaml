@@ -50,7 +50,7 @@
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
         <Grid Padding="16,12"
-              AutomationProperties.Name="{x:Bind Project.Title}"
+              AutomationProperties.Name="{x:Bind Project.Title, Mode=OneWay}"
               ColumnSpacing="16"
               RowSpacing="8">
             <Grid.RowDefinitions>
@@ -65,18 +65,18 @@
             <Image x:Name="TileImage"
                    Grid.RowSpan="3"
                    MaxWidth="92"
-                   Source="{x:Bind Project.ImageSrc}"
+                   Source="{x:Bind Project.ImageSrc, Mode=OneWay}"
                    Stretch="Uniform" />
             <TextBlock Grid.Column="1"
                        Margin="0,0,16,0"
                        Style="{StaticResource SubtitleTextBlockStyle}"
                        Text="{x:Bind Project.Title, Mode=OneWay}" />
-            <TextBlock Grid.Row="1"
+            <!--<TextBlock Grid.Row="1"
                        Grid.Column="1"
                        Opacity=".7"
                        Style="{StaticResource CaptionTextBlockStyle}"
                        Text="{x:Bind Project.Category, Mode=OneWay}"
-                       ToolTipService.ToolTip="{x:Bind Project.Description, Mode=OneWay}" />
+                       ToolTipService.ToolTip="{x:Bind Project.Description, Mode=OneWay}" />-->
             <TextBlock Grid.Row="2"
                        Grid.Column="1"
                        MaxWidth="240"

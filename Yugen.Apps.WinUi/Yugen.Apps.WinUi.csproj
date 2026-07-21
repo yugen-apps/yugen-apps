@@ -15,6 +15,7 @@
 		<ImplicitUsings>disable</ImplicitUsings>
 		<Nullable>disable</Nullable>
 	</PropertyGroup>
+	
 	<ItemGroup>
 	  <Content Remove="Assets\Store\BadgeLogo.scale-400.png" />
 	  <Content Remove="Assets\Store\LargeTile.scale-100.png" />
@@ -62,24 +63,36 @@
 	  <Content Remove="Assets\Store\Wide310x150Logo.scale-150.png" />
 	  <Content Remove="Assets\Store\Wide310x150Logo.scale-400.png" />
 	</ItemGroup>
+	
 	<ItemGroup>
-	  <None Remove="Assets\Img\Icons\Discord_Dark.svg" />
-	  <None Remove="Assets\Img\Icons\Discord_Light.svg" />
-	  <None Remove="Assets\Img\Icons\Docs_Dark.svg" />
-	  <None Remove="Assets\Img\Icons\Docs_Light.svg" />
-	  <None Remove="Assets\Img\Icons\Facebook_Dark.svg" />
-	  <None Remove="Assets\Img\Icons\Facebook_Light.svg" />
-	  <None Remove="Assets\Img\Icons\GitHub_Dark.svg" />
-	  <None Remove="Assets\Img\Icons\GitHub_Light.svg" />
-	  <None Remove="Assets\Img\Icons\LinkedIn_Dark.svg" />
-	  <None Remove="Assets\Img\Icons\LinkedIn_Light.svg" />
-	  <None Remove="Assets\Img\Icons\NuGet_Dark.svg" />
-	  <None Remove="Assets\Img\Icons\NuGet_Light.svg" />
-	  <None Remove="Assets\Img\Icons\Website_Dark.svg" />
-	  <None Remove="Assets\Img\Icons\Website_Light.svg" />
-	  <None Remove="Assets\Img\Icons\X_Dark.svg" />
-	  <None Remove="Assets\Img\Logo-NoBackground.svg" />
-	  <None Remove="Views\Main\ProjectTileUserControl.xaml" />
+	  <Content Include="..\Yugen.Apps.Web\wwwroot\assets\data\projects.json" Link="Assets\Data\projects.json">
+	    <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+	    <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+	  </Content>
+	  <Content Include="..\Yugen.Apps.Web\wwwroot\assets\img\cards\aboutme.png" Link="Assets\Img\Cards\aboutme.png">
+	    <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+	    <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+	  </Content>
+	  <Content Include="..\Yugen.Apps.Web\wwwroot\assets\img\cards\dj.png" Link="Assets\Img\Cards\dj.png">
+	    <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+	    <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+	  </Content>
+	  <Content Include="..\Yugen.Apps.Web\wwwroot\assets\img\cards\mosaic.png" Link="Assets\Img\Cards\mosaic.png">
+	    <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+	    <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+	  </Content>
+	  <Content Include="..\Yugen.Apps.Web\wwwroot\assets\img\cards\toolkit.png" Link="Assets\Img\Cards\toolkit.png">
+	    <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+	    <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+	  </Content>
+	  <Content Include="..\Yugen.Apps.Web\wwwroot\assets\img\cards\wacommunity.png" Link="Assets\Img\Cards\wacommunity.png">
+	    <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+	    <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+	  </Content>
+	  <Content Include="..\Yugen.Apps.Web\wwwroot\assets\img\cards\walkthroughs.png" Link="Assets\Img\Cards\walkthroughs.png">
+	    <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+	    <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+	  </Content>
 	</ItemGroup>
 
 	<!--
@@ -100,7 +113,7 @@
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
-		<PackageReference Include="Microsoft.Windows.SDK.BuildTools.WinApp" Version="0.4.0" />
+		<PackageReference Include="Microsoft.Windows.SDK.BuildTools.WinApp" Version="0.5.0" />
 		<PackageReference Include="Microsoft.Xaml.Behaviors.WinUI.Managed" Version="3.0.1" />
 	</ItemGroup>
 
@@ -120,6 +133,9 @@
 	<ItemGroup Condition="'$(DisableMsixProjectCapabilityAddedByProject)'!='true' and '$(EnableMsixTooling)'=='true'">
 		<ProjectCapability Include="Msix" />
 	</ItemGroup>
+	<ItemGroup>
+	  <Folder Include="Assets\Img\Cards\" />
+	</ItemGroup>
 
 	<!--
     Defining the "HasPackageAndPublishMenuAddedByProject" property here allows the Solution
@@ -137,23 +153,4 @@
 		<PublishTrimmed Condition="'$(Configuration)' == 'Debug'">False</PublishTrimmed>
 		<PublishTrimmed Condition="'$(Configuration)' != 'Debug'">True</PublishTrimmed>
 	</PropertyGroup>
-	<ItemGroup>
-	  <EditorConfigFiles Remove="C:\Users\rathm\source\repos\yugen-apps\Yugen.Apps.WinUi\.editorconfig" />
-	</ItemGroup>
-	<ItemGroup>
-	  <None Include="C:\Users\rathm\source\repos\yugen-apps\Yugen.Apps.WinUi\.editorconfig" />
-	</ItemGroup>
-	<ItemGroup>
-	  <Content Update="Assets\Img\Icons\Docs_Dark.svg">
-	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-	  </Content>
-	  <Content Update="Assets\Img\Icons\Docs_Light.svg">
-	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-	  </Content>
-	</ItemGroup>
-	<ItemGroup>
-	  <Page Update="Views\Main\ProjectTileUserControl.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </Page>
-	</ItemGroup>
 </Project>

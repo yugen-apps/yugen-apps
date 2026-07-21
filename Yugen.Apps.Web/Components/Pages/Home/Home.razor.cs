@@ -19,13 +19,13 @@ public partial class Home
     [Inject]
     public IProjectsService ProjectsService { get; set; }
 
-    private List<ProjectObservableObject> projects;
+    private List<CategoryObservableObject> categories;
 
     protected override async Task OnInitializedAsync()
     {
         var fileContent = await Http.GetStringAsync("assets/data/projects.json");
-        var projectDtos = ProjectsService.GetFromText(fileContent);
-        projects = projectDtos.Select(dto => new ProjectObservableObject(dto)).ToList();
+        var categoryDtos = ProjectsService.GetFromText(fileContent);
+        categories = categoryDtos.Select(x => x.ToCategoryObservableObject()).ToList();
     }
 
     private async Task OpenDialogAsync(string description)

@@ -2,6 +2,7 @@
 using Microsoft.UI.Xaml;
 using System;
 using Yugen.Apps.Shared.ProjectsService;
+using Yugen.Apps.WinUi.Views.Main;
 
 namespace Yugen.Apps.WinUi;
 

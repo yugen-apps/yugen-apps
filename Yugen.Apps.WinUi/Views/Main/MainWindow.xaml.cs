@@ -1,7 +1,7 @@
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.UI.Xaml;
 
-namespace Yugen.Apps.WinUi;
+namespace Yugen.Apps.WinUi.Views.Main;
 
 public sealed partial class MainWindow : Window
 {

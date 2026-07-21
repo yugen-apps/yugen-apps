@@ -4,8 +4,6 @@ namespace Yugen.Apps.Shared.ProjectsService;
 
 public class ProjectDto
 {
-    public string Category { get; set; }
-
     public string Description { get; set; }
 
     public int Id { get; set; }

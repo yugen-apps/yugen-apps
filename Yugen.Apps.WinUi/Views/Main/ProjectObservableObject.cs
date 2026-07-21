@@ -16,8 +16,6 @@ public partial class ProjectObservableObject : ObservableObject
         Links = model.Links.Select(link => new LinkObservableObject(link)).ToList();
     }
 
-    public string Category => _model.Category;
-
     public string Description => _model.Description;
 
     public int Id => _model.Id;
