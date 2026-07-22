@@ -2,13 +2,15 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:adapters="using:Yugen.Apps.WinUi.Adapters"
+        xmlns:behaviors="using:Yugen.Apps.WinUi.Behaviors"
+        xmlns:ctkc="using:CommunityToolkit.WinUI.Controls"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:ic="using:FluentIcons.WinUI"
         xmlns:interactivity="using:Microsoft.Xaml.Interactivity"
         xmlns:local="using:Yugen.Apps.WinUi.Views.Main"
+        xmlns:localXaml="using:Yugen.Apps.WinUi.Views.Xaml"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:rojpectsService="using:Yugen.Apps.Shared.ProjectsService"
-        xmlns:behaviors="using:Yugen.Apps.WinUi.Behaviors"
         Title="{x:Bind WindowTitle}"
         mc:Ignorable="d">
 
@@ -74,86 +76,51 @@
                VerticalAlignment="Top"
                Source="{ThemeResource BannerBackgroundImageSource}" />
 
-        <SelectorBar Grid.Row="3"
-                     Margin="4,0,4,4"
-                     Background="{ThemeResource LayerOnMicaBaseAltFillColorTertiaryBrush}"
-                     CornerRadius="8">
-            <interactivity:Interaction.Behaviors>
-                <behaviors:SelectorBarSelectionChangedBehavior Command="{x:Bind ViewModel.SelectorBarSelectionChangedCommand}"/>
-            </interactivity:Interaction.Behaviors>
+        <Grid Grid.Row="4"
+              Margin="4,0,4,4"
+              Padding="16"
+              HorizontalAlignment="Stretch"
+              AutomationProperties.Name="{x:Bind Title}"
+              Background="{ThemeResource LayerOnMicaBaseAltFillColorTertiaryBrush}"
+              CornerRadius="8"
+              RowSpacing="16">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <ctkc:Segmented ItemsSource="{x:Bind ViewModel.AllCategories, Mode=OneWay}"
+                            SelectedItem="{x:Bind ViewModel.SelectedCategory, Mode=TwoWay}">
+                <ctkc:Segmented.ItemTemplate>
+                    <DataTemplate x:DataType="local:CategoryObservableObject">
+                        <Grid ColumnSpacing="8">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition />
+                            </Grid.ColumnDefinitions>
+                            <ImageIcon Width="20"
+                                       localXaml:ThemeAwareIcon.IconId="{x:Bind Type}" />
+                            <TextBlock Grid.Column="1"
+                                       Text="{x:Bind Title}" />
+                        </Grid>
+                    </DataTemplate>
+                </ctkc:Segmented.ItemTemplate>
+            </ctkc:Segmented>
+            <ScrollViewer Grid.Row="1"
+                          Padding="0,8">
+                <ItemsRepeater ItemsSource="{x:Bind ViewModel.SelectedCategory.Projects, Mode=OneWay}">
+                    <ItemsRepeater.Layout>
+                        <UniformGridLayout MinColumnSpacing="16"
+                                           MinRowSpacing="16" />
+                    </ItemsRepeater.Layout>
 
-            <SelectorBarItem Text="Microsoft Store Apps">
-                <SelectorBarItem.Icon>
-                    <ic:FluentIcon Icon="StoreMicrosoft"
-                                   IconVariant="Regular"
-                                   IconSize="Size24" />
-                </SelectorBarItem.Icon>
-            </SelectorBarItem>
-            <SelectorBarItem Text="Dev Toolkit">
-                <SelectorBarItem.Icon>
-                    <ic:FluentIcon Icon="WindowDevTools"
-                                   IconVariant="Regular"
-                                   IconSize="Size24" />
-                </SelectorBarItem.Icon>
-            </SelectorBarItem>
-            <SelectorBarItem Text="External">
-                <SelectorBarItem.Icon>
-                    <ic:FluentIcon Icon="Earth"
-                                   IconVariant="Regular"
-                                   IconSize="Size24" />
-                </SelectorBarItem.Icon>
-            </SelectorBarItem>
-        </SelectorBar>
-
-        <Border Grid.Row="4"
-                Margin="4,0,4,4"
-                Background="{ThemeResource LayerOnMicaBaseAltFillColorTertiaryBrush}"
-                CornerRadius="8">
-            <ItemsRepeaterScrollHost>
-                <ScrollViewer>
-                    <ItemsRepeater Margin="32"
-                                   ItemsSource="{x:Bind ViewModel.SelectedCategories, Mode=OneWay}">
-                        <ItemsRepeater.Layout>
-                            <StackLayout Orientation="Vertical"
-                                         Spacing="32" />
-                        </ItemsRepeater.Layout>
-
-                        <ItemsRepeater.ItemTemplate>
-                            <DataTemplate x:DataType="local:CategoryObservableObject">
-                                <Grid HorizontalAlignment="Stretch"
-                                      AutomationProperties.Name="{x:Bind Title}"
-                                      RowSpacing="8">
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="Auto" />
-                                        <RowDefinition />
-                                    </Grid.RowDefinitions>
-                                    <TextBlock Style="{StaticResource BodyTextBlockStyle}"
-                                               Text="{x:Bind Title}" />
-                                    <ScrollViewer Grid.Row="1"
-                                                  Padding="0,8"
-                                                  HorizontalScrollBarVisibility="Auto"
-                                                  HorizontalScrollMode="Auto"
-                                                  IsHorizontalRailEnabled="True"
-                                                  VerticalScrollMode="Disabled">
-                                        <ItemsRepeater ItemsSource="{x:Bind Projects, Mode=OneWay}">
-                                            <ItemsRepeater.Layout>
-                                                <StackLayout Orientation="Horizontal"
-                                                             Spacing="32" />
-                                            </ItemsRepeater.Layout>
-                                            <ItemsRepeater.ItemTemplate>
-                                                <DataTemplate x:DataType="local:ProjectObservableObject">
-                                                    <local:ProjectTileUserControl Project="{x:Bind}" />
-                                                </DataTemplate>
-                                            </ItemsRepeater.ItemTemplate>
-                                        </ItemsRepeater>
-                                    </ScrollViewer>
-                                </Grid>
-                            </DataTemplate>
-                        </ItemsRepeater.ItemTemplate>
-                    </ItemsRepeater>
-                </ScrollViewer>
-            </ItemsRepeaterScrollHost>
-        </Border>
+                    <ItemsRepeater.ItemTemplate>
+                        <DataTemplate x:DataType="local:ProjectObservableObject">
+                            <local:ProjectTileUserControl Project="{x:Bind}" />
+                        </DataTemplate>
+                    </ItemsRepeater.ItemTemplate>
+                </ItemsRepeater>
+            </ScrollViewer>
+        </Grid>
 
         <!--
 		<WebView2 x:Name="WebView2"

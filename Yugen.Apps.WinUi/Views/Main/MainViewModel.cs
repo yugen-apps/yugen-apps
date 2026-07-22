@@ -21,7 +21,7 @@ public partial class MainViewModel : ObservableObject
     public partial List<CategoryObservableObject> AllCategories { get; set; } = [];
 
     [ObservableProperty]
-    public partial List<CategoryObservableObject> SelectedCategories { get; set; } = [];
+    public partial CategoryObservableObject SelectedCategory { get; set; }
 
     [RelayCommand]
     private async Task Load()
@@ -29,12 +29,6 @@ public partial class MainViewModel : ObservableObject
         var filePath = $"{Package.Current.InstalledLocation.Path}\\Assets\\Data\\projects.json";
         var categoryDtos = _projectsService.GetFromPath(filePath);
         AllCategories = categoryDtos.Select(x => x.ToCategoryObservableObject()).ToList();
-        SelectorBarSelectionChangedCommand.Execute(0);
-    }
-
-    [RelayCommand]
-    private async Task SelectorBarSelectionChanged(int index)
-    {
-        SelectedCategories = [AllCategories[index]];
+        SelectedCategory = AllCategories[0];
     }
 }

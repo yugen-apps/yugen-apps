@@ -1,6 +1,7 @@
 [
   {
     "Title": "Microsoft Store Apps",
+    "Type": "Store",
     "Projects": [
       {
         "Id": 1,
@@ -44,6 +45,7 @@
   },
   {
     "Title": "Dev Toolkit",
+    "Type": "Code",
     "Projects": [
       {
         "Id": 3,
@@ -71,6 +73,7 @@
   },
   {
     "Title": "External",
+    "Type": "Website",
     "Projects": [
       {
         "Id": 4,

@@ -45,6 +45,7 @@
           BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}"
           BorderThickness="1"
           CornerRadius="8">
+
         <Grid.RowDefinitions>
             <RowDefinition />
             <RowDefinition Height="Auto" />
@@ -55,32 +56,26 @@
               RowSpacing="8">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
+                <RowDefinition />
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto" />
                 <ColumnDefinition />
             </Grid.ColumnDefinitions>
             <Image x:Name="TileImage"
-                   Grid.RowSpan="3"
-                   MaxWidth="92"
+                   Grid.RowSpan="2"
+                   MaxWidth="96"
+                   VerticalAlignment="Top"
                    Source="{x:Bind Project.ImageSrc, Mode=OneWay}"
                    Stretch="Uniform" />
+
             <TextBlock Grid.Column="1"
                        Margin="0,0,16,0"
                        Style="{StaticResource SubtitleTextBlockStyle}"
                        Text="{x:Bind Project.Title, Mode=OneWay}" />
-            <!--<TextBlock Grid.Row="1"
-                       Grid.Column="1"
-                       Opacity=".7"
-                       Style="{StaticResource CaptionTextBlockStyle}"
-                       Text="{x:Bind Project.Category, Mode=OneWay}"
-                       ToolTipService.ToolTip="{x:Bind Project.Description, Mode=OneWay}" />-->
             <TextBlock Grid.Row="2"
                        Grid.Column="1"
                        MaxWidth="240"
-                       MaxHeight="64"
                        Text="{x:Bind Project.Description, Mode=OneWay}"
                        TextTrimming="CharacterEllipsis"
                        TextWrapping="WrapWholeWords"
