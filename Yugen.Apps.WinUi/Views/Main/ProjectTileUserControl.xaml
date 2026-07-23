@@ -11,29 +11,31 @@
     <UserControl.Resources>
         <DataTemplate x:Key="AccentLinkDataTemplate"
                       x:DataType="local:LinkObservableObject">
-            <Button Command="{x:Bind LaunchCommand}"
-                    ToolTipService.ToolTip="{x:Bind Description}">
+            <Button Command="{x:Bind LaunchCommand, Mode=OneWay}"
+                    ToolTipService.ToolTip="{x:Bind Description, Mode=OneWay}">
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition />
                         <ColumnDefinition Width="Auto" />
                     </Grid.ColumnDefinitions>
                     <ImageIcon Width="20"
-                               localXaml:ThemeAwareIcon.IconId="{x:Bind Type}" />
+                               localXaml:ThemeAwareIcon.IconId="{x:Bind Type, Mode=OneWay}" />
                     <TextBlock Grid.Column="1"
                                Margin="8,0"
-                               Text="{x:Bind CommandText}" />
+                               Text="{x:Bind CommandText, Mode=OneWay}" />
                 </Grid>
             </Button>
         </DataTemplate>
+        
         <DataTemplate x:Key="DefaultLinkDataTemplate"
                       x:DataType="local:LinkObservableObject">
-            <Button Command="{x:Bind LaunchCommand}"
-                    ToolTipService.ToolTip="{x:Bind Description}">
+            <Button Command="{x:Bind LaunchCommand, Mode=OneWay}"
+                    ToolTipService.ToolTip="{x:Bind Description, Mode=OneWay}">
                 <ImageIcon Width="20"
-                           localXaml:ThemeAwareIcon.IconId="{x:Bind Type}" />
+                           localXaml:ThemeAwareIcon.IconId="{x:Bind Type, Mode=OneWay}" />
             </Button>
         </DataTemplate>
+        
         <localXaml:LinkObservableObjectDataTemplateSelector x:Key="LinkDataTemplateSelector"
                                                             AccentTemplate="{StaticResource AccentLinkDataTemplate}"
                                                             DefaultTemplate="{StaticResource DefaultLinkDataTemplate}" />
@@ -45,11 +47,11 @@
           BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}"
           BorderThickness="1"
           CornerRadius="8">
-
         <Grid.RowDefinitions>
             <RowDefinition />
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
+        
         <Grid Padding="16,12"
               AutomationProperties.Name="{x:Bind Project.Title, Mode=OneWay}"
               ColumnSpacing="16"
@@ -62,6 +64,7 @@
                 <ColumnDefinition Width="Auto" />
                 <ColumnDefinition />
             </Grid.ColumnDefinitions>
+            
             <Image x:Name="TileImage"
                    Grid.RowSpan="2"
                    MaxWidth="96"
@@ -73,6 +76,7 @@
                        Margin="0,0,16,0"
                        Style="{StaticResource SubtitleTextBlockStyle}"
                        Text="{x:Bind Project.Title, Mode=OneWay}" />
+            
             <TextBlock Grid.Row="2"
                        Grid.Column="1"
                        MaxWidth="240"
@@ -81,11 +85,12 @@
                        TextWrapping="WrapWholeWords"
                        ToolTipService.ToolTip="{x:Bind Project.Description, Mode=OneWay}" />
         </Grid>
+        
         <Border Grid.Row="1"
                 Padding="16,12"
                 Background="{ThemeResource CardBackgroundFillColorSecondaryBrush}">
             <ItemsRepeater ItemTemplate="{StaticResource LinkDataTemplateSelector}"
-                           ItemsSource="{x:Bind Project.Links}">
+                           ItemsSource="{x:Bind Project.Links, Mode=OneWay}">
                 <ItemsRepeater.Layout>
                     <StackLayout Orientation="Horizontal"
                                  Spacing="8" />

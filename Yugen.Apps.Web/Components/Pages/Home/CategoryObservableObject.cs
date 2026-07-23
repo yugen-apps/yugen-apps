@@ -10,4 +10,7 @@ public partial class CategoryObservableObject : ObservableObject
 
     [ObservableProperty]
     public partial string Title { get; set; }
+
+    [ObservableProperty]
+    public partial string Type { get; set; }
 }
