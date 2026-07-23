@@ -10,7 +10,7 @@
         xmlns:localXaml="using:Yugen.Apps.WinUi.Views.Xaml"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:rojpectsService="using:Yugen.Apps.Shared.ProjectsService"
-        Title="{x:Bind WindowTitle}"
+        Title="{x:Bind ViewModel.WindowTitle}"
         mc:Ignorable="d">
 
     <Window.SystemBackdrop>
@@ -18,6 +18,11 @@
     </Window.SystemBackdrop>
 
     <Grid>
+        <Grid.Resources>
+            <XamlUICommand x:Key="Launch2XamlUICommand"
+                           Command="{x:Bind ViewModel.LaunchCommand}" />
+        </Grid.Resources>
+
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
@@ -33,7 +38,7 @@
         </interactivity:Interaction.Behaviors>
 
         <TitleBar x:Name="AppTitleBar"
-                  Title="{x:Bind WindowTitle}"
+                  Title="{x:Bind ViewModel.WindowTitle}"
                   Grid.Row="0"
                   VerticalAlignment="Top">
             <TitleBar.IconSource>
@@ -45,7 +50,7 @@
               Grid.Row="1"
               Margin="32,12"
               Background="{ThemeResource LayerOnMicaBaseAltFillColorTransparentBrush}"
-              ColumnSpacing="24">            
+              ColumnSpacing="24">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
@@ -54,16 +59,16 @@
                 <ColumnDefinition Width="Auto" />
                 <ColumnDefinition />
             </Grid.ColumnDefinitions>
-            
+
             <Image Grid.RowSpan="2"
                    Height="72"
                    Source="/Assets/Img/Logo-NoBackground.svg" />
-            
+
             <TextBlock Grid.Column="1"
                        VerticalAlignment="Bottom"
                        Style="{StaticResource TitleLargeTextBlockStyle}"
                        Text="YUGEN APPS" />
-            
+
             <TextBlock Grid.Row="1"
                        Grid.Column="1"
                        VerticalAlignment="Top"
@@ -90,7 +95,7 @@
                 <RowDefinition Height="Auto" />
                 <RowDefinition />
             </Grid.RowDefinitions>
-            
+
             <ctkc:Segmented ItemsSource="{x:Bind ViewModel.AllCategories, Mode=OneWay}"
                             SelectedItem="{x:Bind ViewModel.SelectedCategory, Mode=TwoWay}"
                             HorizontalAlignment="Center">
@@ -101,7 +106,7 @@
                                 <ColumnDefinition Width="Auto" />
                                 <ColumnDefinition />
                             </Grid.ColumnDefinitions>
-                            
+
                             <ImageIcon Width="20"
                                        localXaml:ThemeAwareIcon.IconId="{x:Bind Type}" />
                             <TextBlock Grid.Column="1"
@@ -110,7 +115,7 @@
                     </DataTemplate>
                 </ctkc:Segmented.ItemTemplate>
             </ctkc:Segmented>
-            
+
             <ScrollViewer Grid.Row="1"
                           Padding="0,8">
                 <ItemsRepeater ItemsSource="{x:Bind ViewModel.SelectedCategory.Projects, Mode=OneWay}">
@@ -121,17 +126,30 @@
 
                     <ItemsRepeater.ItemTemplate>
                         <DataTemplate x:DataType="local:ProjectObservableObject">
-                            <local:ProjectTileUserControl Project="{x:Bind}" />
+                            <local:ProjectTileUserControl Project="{x:Bind}"
+                                                          LaunchCommand="{StaticResource Launch2XamlUICommand}" />
+
                         </DataTemplate>
                     </ItemsRepeater.ItemTemplate>
                 </ItemsRepeater>
             </ScrollViewer>
         </Grid>
 
-        <!--
-		<WebView2 x:Name="WebView2"
-                    Source="https://www.yugenapps.com/"
-                    CoreWebView2Initialized="WebView2_CoreWebView2Initialized" />
-        -->
+        <Popup HorizontalAlignment="Center"
+               VerticalAlignment="Center"
+               IsOpen="{x:Bind ViewModel.IsPopupOpen, Mode=OneWay}">
+            <StackPanel BorderThickness="1"
+                        BorderBrush="{ThemeResource SurfaceStrokeColorDefaultBrush}"
+                        Background="{ThemeResource AcrylicBackgroundFillColorDefaultBrush}"
+                        CornerRadius="{StaticResource OverlayCornerRadius}">
+                <WebView2 Height="800"
+                          Width="800"
+                          Source="{x:Bind ViewModel.WebViewSource, Mode=OneWay}" />
+
+                <Button Content="Close"
+                        Command="{x:Bind ViewModel.ClosePopupCommand}" />
+            </StackPanel>
+        </Popup>
+
     </Grid>
 </Window>

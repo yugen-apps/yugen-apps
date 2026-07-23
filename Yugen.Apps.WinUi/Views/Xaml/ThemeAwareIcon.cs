@@ -9,7 +9,9 @@ public static class ThemeAwareIcon
 {
     public static readonly DependencyProperty IconIdProperty =
       DependencyProperty.RegisterAttached(
-          "IconId", typeof(string), typeof(ThemeAwareIcon),
+          "IconId", 
+          typeof(string), 
+          typeof(ThemeAwareIcon),
           new PropertyMetadata(null, OnIconIdChanged));
 
     public static string GetIconId(ImageIcon obj) => (string)obj.GetValue(IconIdProperty);

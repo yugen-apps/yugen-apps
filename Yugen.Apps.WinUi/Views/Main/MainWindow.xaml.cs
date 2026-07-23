@@ -19,8 +19,6 @@ public sealed partial class MainWindow : Window
 
     public MainViewModel ViewModel { get; }
 
-    public string WindowTitle { get; } = "Yugen Apps";
-
     //private void WebView2_CoreWebView2Initialized(WebView2 sender, CoreWebView2InitializedEventArgs args)
     //{
     //	WebView2.CoreWebView2.NewWindowRequested += CoreWebView2_NewWindowRequested;

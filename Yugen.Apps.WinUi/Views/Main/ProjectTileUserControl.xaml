@@ -9,15 +9,20 @@
              mc:Ignorable="d">
 
     <UserControl.Resources>
+        <XamlUICommand x:Key="LaunchXamlUICommand"
+                       Command="{x:Bind LaunchCommand}" />
+        
         <DataTemplate x:Key="AccentLinkDataTemplate"
                       x:DataType="local:LinkObservableObject">
-            <Button Command="{x:Bind LaunchCommand, Mode=OneWay}"
+            <Button Command="{StaticResource LaunchXamlUICommand}"
+                    CommandParameter="{x:Bind Href}"
                     ToolTipService.ToolTip="{x:Bind Description, Mode=OneWay}">
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition />
                         <ColumnDefinition Width="Auto" />
                     </Grid.ColumnDefinitions>
+                    
                     <ImageIcon Width="20"
                                localXaml:ThemeAwareIcon.IconId="{x:Bind Type, Mode=OneWay}" />
                     <TextBlock Grid.Column="1"
@@ -29,7 +34,8 @@
         
         <DataTemplate x:Key="DefaultLinkDataTemplate"
                       x:DataType="local:LinkObservableObject">
-            <Button Command="{x:Bind LaunchCommand, Mode=OneWay}"
+            <Button Command="{StaticResource LaunchXamlUICommand}"
+                    CommandParameter="{x:Bind Href}"
                     ToolTipService.ToolTip="{x:Bind Description, Mode=OneWay}">
                 <ImageIcon Width="20"
                            localXaml:ThemeAwareIcon.IconId="{x:Bind Type, Mode=OneWay}" />

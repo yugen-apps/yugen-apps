@@ -1,9 +1,5 @@
 using CommunityToolkit.Mvvm.ComponentModel;
-using CommunityToolkit.Mvvm.Input;
 using FluentIcons.Common;
-using System;
-using System.Threading.Tasks;
-using Windows.System;
 using Yugen.Apps.Shared.ProjectsService;
 
 namespace Yugen.Apps.WinUi.Views.Main;
@@ -31,16 +27,4 @@ public partial class LinkObservableObject : ObservableObject
     public string Type => _model.Type;
 
     public string Value => _model.Value;
-
-    [RelayCommand]
-    private async Task LaunchAsync()
-    {
-        try
-        {
-            await Launcher.LaunchUriAsync(new Uri(Href));
-        }
-        catch
-        {
-        }
-    }
 }
