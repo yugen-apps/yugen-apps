@@ -18,8 +18,6 @@ public partial class ProjectObservableObject : ObservableObject
 
     public string Description => _model.Description;
 
-    public int Id => _model.Id;
-
     public string ImageSrc { get; }
 
     public List<LinkObservableObject> Links { get; }

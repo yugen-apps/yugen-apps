@@ -15,84 +15,40 @@
 		<ImplicitUsings>disable</ImplicitUsings>
 		<Nullable>disable</Nullable>
 	</PropertyGroup>
-	
+
 	<ItemGroup>
-	  <Content Remove="Assets\Store\BadgeLogo.scale-400.png" />
-	  <Content Remove="Assets\Store\LargeTile.scale-100.png" />
-	  <Content Remove="Assets\Store\LargeTile.scale-125.png" />
-	  <Content Remove="Assets\Store\LargeTile.scale-150.png" />
-	  <Content Remove="Assets\Store\LargeTile.scale-200.png" />
-	  <Content Remove="Assets\Store\LargeTile.scale-400.png" />
-	  <Content Remove="Assets\Store\SmallTile.scale-100.png" />
-	  <Content Remove="Assets\Store\SmallTile.scale-125.png" />
-	  <Content Remove="Assets\Store\SmallTile.scale-150.png" />
-	  <Content Remove="Assets\Store\SmallTile.scale-200.png" />
-	  <Content Remove="Assets\Store\SmallTile.scale-400.png" />
-	  <Content Remove="Assets\Store\SplashScreen.scale-100.png" />
-	  <Content Remove="Assets\Store\SplashScreen.scale-125.png" />
-	  <Content Remove="Assets\Store\SplashScreen.scale-150.png" />
-	  <Content Remove="Assets\Store\SplashScreen.scale-400.png" />
-	  <Content Remove="Assets\Store\Square150x150Logo.scale-100.png" />
-	  <Content Remove="Assets\Store\Square150x150Logo.scale-125.png" />
-	  <Content Remove="Assets\Store\Square150x150Logo.scale-150.png" />
-	  <Content Remove="Assets\Store\Square150x150Logo.scale-400.png" />
-	  <Content Remove="Assets\Store\Square44x44Logo.altform-lightunplated_targetsize-16.png" />
-	  <Content Remove="Assets\Store\Square44x44Logo.altform-lightunplated_targetsize-24.png" />
-	  <Content Remove="Assets\Store\Square44x44Logo.altform-lightunplated_targetsize-256.png" />
-	  <Content Remove="Assets\Store\Square44x44Logo.altform-lightunplated_targetsize-32.png" />
-	  <Content Remove="Assets\Store\Square44x44Logo.altform-lightunplated_targetsize-48.png" />
-	  <Content Remove="Assets\Store\Square44x44Logo.altform-unplated_targetsize-16.png" />
-	  <Content Remove="Assets\Store\Square44x44Logo.altform-unplated_targetsize-256.png" />
-	  <Content Remove="Assets\Store\Square44x44Logo.altform-unplated_targetsize-32.png" />
-	  <Content Remove="Assets\Store\Square44x44Logo.altform-unplated_targetsize-48.png" />
-	  <Content Remove="Assets\Store\Square44x44Logo.scale-100.png" />
-	  <Content Remove="Assets\Store\Square44x44Logo.scale-125.png" />
-	  <Content Remove="Assets\Store\Square44x44Logo.scale-150.png" />
-	  <Content Remove="Assets\Store\Square44x44Logo.scale-400.png" />
-	  <Content Remove="Assets\Store\Square44x44Logo.targetsize-16.png" />
-	  <Content Remove="Assets\Store\Square44x44Logo.targetsize-24.png" />
-	  <Content Remove="Assets\Store\Square44x44Logo.targetsize-256.png" />
-	  <Content Remove="Assets\Store\Square44x44Logo.targetsize-32.png" />
-	  <Content Remove="Assets\Store\Square44x44Logo.targetsize-48.png" />
-	  <Content Remove="Assets\Store\StoreLogo.scale-125.png" />
-	  <Content Remove="Assets\Store\StoreLogo.scale-150.png" />
-	  <Content Remove="Assets\Store\StoreLogo.scale-200.png" />
-	  <Content Remove="Assets\Store\StoreLogo.scale-400.png" />
-	  <Content Remove="Assets\Store\Wide310x150Logo.scale-100.png" />
-	  <Content Remove="Assets\Store\Wide310x150Logo.scale-125.png" />
-	  <Content Remove="Assets\Store\Wide310x150Logo.scale-150.png" />
-	  <Content Remove="Assets\Store\Wide310x150Logo.scale-400.png" />
-	</ItemGroup>
-	
-	<ItemGroup>
-	  <Content Include="..\Yugen.Apps.Web\wwwroot\assets\data\projects.json" Link="Assets\Data\projects.json">
-	    <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-	    <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-	  </Content>
-	  <Content Include="..\Yugen.Apps.Web\wwwroot\assets\img\cards\aboutme.png" Link="Assets\Img\Cards\aboutme.png">
-	    <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-	    <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-	  </Content>
-	  <Content Include="..\Yugen.Apps.Web\wwwroot\assets\img\cards\dj.png" Link="Assets\Img\Cards\dj.png">
-	    <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-	    <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-	  </Content>
-	  <Content Include="..\Yugen.Apps.Web\wwwroot\assets\img\cards\mosaic.png" Link="Assets\Img\Cards\mosaic.png">
-	    <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-	    <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-	  </Content>
-	  <Content Include="..\Yugen.Apps.Web\wwwroot\assets\img\cards\toolkit.png" Link="Assets\Img\Cards\toolkit.png">
-	    <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-	    <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-	  </Content>
-	  <Content Include="..\Yugen.Apps.Web\wwwroot\assets\img\cards\wacommunity.png" Link="Assets\Img\Cards\wacommunity.png">
-	    <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-	    <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-	  </Content>
-	  <Content Include="..\Yugen.Apps.Web\wwwroot\assets\img\cards\walkthroughs.png" Link="Assets\Img\Cards\walkthroughs.png">
-	    <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-	    <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-	  </Content>
+		<Content Include="..\Yugen.Apps.Web\wwwroot\assets\data\projects.json" Link="Assets\Data\projects.json">
+			<ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+			<CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+		</Content>
+		<Content Include="..\Yugen.Apps.Web\wwwroot\assets\img\cards\aboutme.png" Link="Assets\Img\Cards\aboutme.png">
+			<ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+			<CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+		</Content>
+		<Content Include="..\Yugen.Apps.Web\wwwroot\assets\img\cards\dj.png" Link="Assets\Img\Cards\dj.png">
+			<ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+			<CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+		</Content>
+		<Content Include="..\Yugen.Apps.Web\wwwroot\assets\img\cards\homebudget.png" Link="Assets\Img\Cards\homebudget.png">
+			<ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+			<CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+		</Content>
+		<Content Include="..\Yugen.Apps.Web\wwwroot\assets\img\cards\mosaic.png" Link="Assets\Img\Cards\mosaic.png">
+			<ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+			<CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+		</Content>
+		<Content Include="..\Yugen.Apps.Web\wwwroot\assets\img\cards\toolkit.png" Link="Assets\Img\Cards\toolkit.png">
+			<ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+			<CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+		</Content>
+		<Content Include="..\Yugen.Apps.Web\wwwroot\assets\img\cards\wacommunity.png" Link="Assets\Img\Cards\wacommunity.png">
+			<ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+			<CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+		</Content>
+		<Content Include="..\Yugen.Apps.Web\wwwroot\assets\img\cards\walkthroughs.png" Link="Assets\Img\Cards\walkthroughs.png">
+			<ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+			<CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+		</Content>
 	</ItemGroup>
 
 	<!--
@@ -109,7 +65,7 @@
 		<PackageReference Include="FluentIcons.WinUI" Version="2.2.333" />
 		<PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="10.0.10" />
 		<PackageReference Include="Microsoft.WindowsAppSDK" Version="2.2.0" />
-		<PackageReference Include="Microsoft.Windows.SDK.BuildTools" Version="10.0.28000.2270" />
+		<PackageReference Include="Microsoft.Windows.SDK.BuildTools" Version="10.0.28000.2526" />
 		<PackageReference Include="Microsoft.Windows.SDK.BuildTools.MSIX" Version="1.7.260610101">
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -119,7 +75,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <ProjectReference Include="..\Yugen.Apps.Shared\Yugen.Apps.Shared.csproj" />
+		<ProjectReference Include="..\Yugen.Apps.Shared\Yugen.Apps.Shared.csproj" />
 	</ItemGroup>
 
 	<ItemGroup>

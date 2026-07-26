@@ -135,14 +135,16 @@
             </ScrollViewer>
         </Grid>
 
-        <Popup HorizontalAlignment="Center"
-               VerticalAlignment="Center"
+        <Popup Grid.Row="1" 
+               Grid.RowSpan="4" 
+               HorizontalAlignment="Center"
+               VerticalAlignment="Top"
                IsOpen="{x:Bind ViewModel.IsPopupOpen, Mode=OneWay}">
             <StackPanel BorderThickness="1"
                         BorderBrush="{ThemeResource SurfaceStrokeColorDefaultBrush}"
                         Background="{ThemeResource AcrylicBackgroundFillColorDefaultBrush}"
                         CornerRadius="{StaticResource OverlayCornerRadius}">
-                <WebView2 Height="800"
+                <WebView2 Height="600"
                           Width="800"
                           Source="{x:Bind ViewModel.WebViewSource, Mode=OneWay}" />
 
