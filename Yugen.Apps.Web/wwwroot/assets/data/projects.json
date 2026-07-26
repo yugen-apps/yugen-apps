@@ -48,7 +48,7 @@
       {
         "ImageSrc": "homebudget.png",
         "Title": "Yugen Home Budget",
-        "Description": "",
+        "Description": "A blazor web app to keep track of your family expenses.",
         "Links": [
           {
             "Type": "GitHub",
@@ -93,7 +93,7 @@
       {
         "ImageSrc": "Walkthroughs.png",
         "Title": "Walkthroughs",
-        "Description": "",
+        "Description": "A collection of walkthroughs.",
         "Links": [
           {
             "Type": "Website",
@@ -105,7 +105,7 @@
       {
         "ImageSrc": "aboutme.png",
         "Title": "About Me",
-        "Description": "",
+        "Description": "Learn more about myself.",
         "Links": [
           {
             "Type": "LinkedIn",
@@ -125,7 +125,7 @@
       {
         "ImageSrc": "wacommunity.png",
         "Title": "Windows App Community",
-        "Description": "",
+        "Description": "A community for Windows app developers, home to enthusiasts, creators and engineers from around the world",
         "Links": [
           {
             "Type": "Discord",

@@ -149,8 +149,10 @@
                           Source="{x:Bind ViewModel.WebViewSource, Mode=OneWay}" />
 
                 <Button Content="Close"
-                        Command="{x:Bind ViewModel.ClosePopupCommand}" />
-            </StackPanel>
+						Command="{x:Bind ViewModel.ClosePopupCommand}" />
+				<Button Content="Copy Link" />
+				<Button Content="Open In Browser" />
+			</StackPanel>
         </Popup>
 
     </Grid>
