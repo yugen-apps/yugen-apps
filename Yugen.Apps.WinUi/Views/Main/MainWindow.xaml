@@ -96,9 +96,9 @@
                 <RowDefinition />
             </Grid.RowDefinitions>
 
-            <ctkc:Segmented ItemsSource="{x:Bind ViewModel.AllCategories, Mode=OneWay}"
-                            SelectedItem="{x:Bind ViewModel.SelectedCategory, Mode=TwoWay}"
-                            HorizontalAlignment="Center">
+            <ctkc:Segmented HorizontalAlignment="Center"
+                            ItemsSource="{x:Bind ViewModel.AllCategories, Mode=OneWay}"
+                            SelectedItem="{x:Bind ViewModel.SelectedCategory, Mode=TwoWay}">
                 <ctkc:Segmented.ItemTemplate>
                     <DataTemplate x:DataType="local:CategoryObservableObject">
                         <Grid ColumnSpacing="8">
@@ -106,7 +106,6 @@
                                 <ColumnDefinition Width="Auto" />
                                 <ColumnDefinition />
                             </Grid.ColumnDefinitions>
-
                             <ImageIcon Width="20"
                                        localXaml:ThemeAwareIcon.IconId="{x:Bind Type}" />
                             <TextBlock Grid.Column="1"
@@ -126,34 +125,32 @@
 
                     <ItemsRepeater.ItemTemplate>
                         <DataTemplate x:DataType="local:ProjectObservableObject">
-                            <local:ProjectTileUserControl Project="{x:Bind}"
-                                                          LaunchCommand="{StaticResource Launch2XamlUICommand}" />
-
+                            <local:ProjectTileUserControl LaunchCommand="{StaticResource Launch2XamlUICommand}"
+                                                          Project="{x:Bind}" />
                         </DataTemplate>
                     </ItemsRepeater.ItemTemplate>
                 </ItemsRepeater>
             </ScrollViewer>
         </Grid>
 
-        <Popup Grid.Row="1" 
-               Grid.RowSpan="4" 
+        <Popup Grid.Row="1"
+               Grid.RowSpan="4"
                HorizontalAlignment="Center"
                VerticalAlignment="Top"
                IsOpen="{x:Bind ViewModel.IsPopupOpen, Mode=OneWay}">
-            <StackPanel BorderThickness="1"
+            <StackPanel Background="{ThemeResource AcrylicBackgroundFillColorDefaultBrush}"
                         BorderBrush="{ThemeResource SurfaceStrokeColorDefaultBrush}"
-                        Background="{ThemeResource AcrylicBackgroundFillColorDefaultBrush}"
+                        BorderThickness="1"
                         CornerRadius="{StaticResource OverlayCornerRadius}">
-                <WebView2 Height="600"
-                          Width="800"
+                <WebView2 Width="800"
+                          Height="600"
                           Source="{x:Bind ViewModel.WebViewSource, Mode=OneWay}" />
 
-                <Button Content="Close"
-						Command="{x:Bind ViewModel.ClosePopupCommand}" />
-				<Button Content="Copy Link" />
-				<Button Content="Open In Browser" />
-			</StackPanel>
+                <Button Command="{x:Bind ViewModel.ClosePopupCommand}"
+                        Content="Close" />
+                <Button Content="Copy Link" />
+                <Button Content="Open In Browser" />
+            </StackPanel>
         </Popup>
-
     </Grid>
 </Window>

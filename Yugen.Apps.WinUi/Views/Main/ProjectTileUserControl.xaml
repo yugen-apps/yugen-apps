@@ -11,7 +11,7 @@
     <UserControl.Resources>
         <XamlUICommand x:Key="LaunchXamlUICommand"
                        Command="{x:Bind LaunchCommand}" />
-        
+
         <DataTemplate x:Key="AccentLinkDataTemplate"
                       x:DataType="local:LinkObservableObject">
             <Button Command="{StaticResource LaunchXamlUICommand}"
@@ -22,7 +22,7 @@
                         <ColumnDefinition />
                         <ColumnDefinition Width="Auto" />
                     </Grid.ColumnDefinitions>
-                    
+
                     <ImageIcon Width="20"
                                localXaml:ThemeAwareIcon.IconId="{x:Bind Type, Mode=OneWay}" />
                     <TextBlock Grid.Column="1"
@@ -31,7 +31,7 @@
                 </Grid>
             </Button>
         </DataTemplate>
-        
+
         <DataTemplate x:Key="DefaultLinkDataTemplate"
                       x:DataType="local:LinkObservableObject">
             <Button Command="{StaticResource LaunchXamlUICommand}"
@@ -41,7 +41,7 @@
                            localXaml:ThemeAwareIcon.IconId="{x:Bind Type, Mode=OneWay}" />
             </Button>
         </DataTemplate>
-        
+
         <localXaml:LinkObservableObjectDataTemplateSelector x:Key="LinkDataTemplateSelector"
                                                             AccentTemplate="{StaticResource AccentLinkDataTemplate}"
                                                             DefaultTemplate="{StaticResource DefaultLinkDataTemplate}" />
@@ -57,12 +57,12 @@
             <RowDefinition />
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
-        
+
         <Grid Padding="16,12"
               AutomationProperties.Name="{x:Bind Project.Title, Mode=OneWay}"
-              ColumnSpacing="16"
-              RowSpacing="8">
+              ColumnSpacing="16">
             <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
                 <RowDefinition />
             </Grid.RowDefinitions>
@@ -70,28 +70,36 @@
                 <ColumnDefinition Width="Auto" />
                 <ColumnDefinition />
             </Grid.ColumnDefinitions>
-            
+
             <Image x:Name="TileImage"
-                   Grid.RowSpan="2"
+                   Grid.RowSpan="3"
                    MaxWidth="96"
                    VerticalAlignment="Top"
                    Source="{x:Bind Project.ImageSrc, Mode=OneWay}"
                    Stretch="Uniform" />
 
             <TextBlock Grid.Column="1"
-                       Margin="0,0,16,0"
+                       Margin="0,0,16,4"
                        Style="{StaticResource SubtitleTextBlockStyle}"
                        Text="{x:Bind Project.Title, Mode=OneWay}" />
-            
+
+            <TextBlock Grid.Row="1"
+                       Grid.Column="1"
+                       Margin="0,0,16,0"
+                       Foreground="{ThemeResource AccentTextFillColorPrimaryBrush}"
+                       Style="{StaticResource CaptionTextBlockStyle}"
+                       Text="{x:Bind Project.Caption, Mode=OneWay}" />
+
             <TextBlock Grid.Row="2"
                        Grid.Column="1"
                        MaxWidth="240"
+                       Margin="0,4,0,0"
                        Text="{x:Bind Project.Description, Mode=OneWay}"
                        TextTrimming="CharacterEllipsis"
                        TextWrapping="WrapWholeWords"
                        ToolTipService.ToolTip="{x:Bind Project.Description, Mode=OneWay}" />
         </Grid>
-        
+
         <Border Grid.Row="1"
                 Padding="16,12"
                 Background="{ThemeResource CardBackgroundFillColorSecondaryBrush}">
