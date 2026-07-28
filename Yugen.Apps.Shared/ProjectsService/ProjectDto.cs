@@ -4,6 +4,8 @@ namespace Yugen.Apps.Shared.ProjectsService;
 
 public class ProjectDto
 {
+    public string Caption { get; set; }
+
     public string Description { get; set; }
 
     public string ImageSrc { get; set; }

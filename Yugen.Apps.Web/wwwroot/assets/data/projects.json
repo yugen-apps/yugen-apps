@@ -1,11 +1,12 @@
 [
   {
-    "Title": "Windows Native Apps",
+    "Title": "Windows Apps",
     "Type": "Store",
     "Projects": [
       {
         "ImageSrc": "dj.png",
         "Title": "Yugen DJ",
+        "Caption": "Music",
         "Description": "A simple, fast, clean but powerful free and open source DJ app that support 2 sound cards!",
         "Links": [
           {
@@ -24,6 +25,7 @@
       {
         "ImageSrc": "mosaic.png",
         "Title": "Yugen Mosaic",
+        "Caption": "Photo & video",
         "Description": "Yugen Mosaic is a free app that creates digital art pictures based on your own images. With it, you can use an unlimited amount of images, to create a photo mosaic which is an image composed of many tiled photos. or you can create some \"Ascii\" \"Art\", this graphic design technique will recreate your pictures with a set of printable characters pieced together. Yugen is an awareness of the universe that triggers emotional responses too deep and powerful for words, and that is just what your art will do with a little help from Yugen Mosaic!",
         "Links": [
           {
@@ -43,11 +45,12 @@
   },
   {
     "Title": "Blazor Apps",
-    "Type": "Store",
+    "Type": "Blazor",
     "Projects": [
       {
         "ImageSrc": "homebudget.png",
         "Title": "Yugen Home Budget",
+        "Caption": "Management",
         "Description": "A blazor web app to keep track of your family expenses.",
         "Links": [
           {
@@ -66,6 +69,7 @@
       {
         "ImageSrc": "toolkit.png",
         "Title": "Yugen Toolkit",
+        "Caption": "Code Library",
         "Description": "The Toolkit is a collection of helper functions, custom controls, and app services. It helps develop common task for UWP apps.",
         "Links": [
           {
@@ -93,6 +97,7 @@
       {
         "ImageSrc": "Walkthroughs.png",
         "Title": "Walkthroughs",
+        "Caption": "Web tutorial",
         "Description": "A collection of walkthroughs.",
         "Links": [
           {
