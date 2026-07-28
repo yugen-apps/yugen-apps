@@ -15,6 +15,10 @@
 		<ImplicitUsings>disable</ImplicitUsings>
 		<Nullable>disable</Nullable>
 	</PropertyGroup>
+	<ItemGroup>
+	  <None Remove="Assets\Img\Icons\LCTWorks_Dark.svg" />
+	  <None Remove="Assets\Img\Icons\LCTWorks_Light.svg" />
+	</ItemGroup>
 
 	<ItemGroup>
 		<Content Include="..\Yugen.Apps.Web\wwwroot\assets\data\projects.json" Link="Assets\Data\projects.json">
@@ -25,7 +29,11 @@
 			<ExcludeFromSingleFile>true</ExcludeFromSingleFile>
 			<CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
 		</Content>
-		<Content Include="..\Yugen.Apps.Web\wwwroot\assets\img\cards\dj.png" Link="Assets\Img\Cards\dj.png">
+		<Content Include="..\Yugen.Apps.Web\wwwroot\assets\img\cards\FontCatalog.svg" Link="Assets\Img\Cards\FontCatalog.svg">
+			<ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+			<CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+		</Content>
+		<Content Include="..\Yugen.Apps.Web\wwwroot\assets\img\cards\dj.svg" Link="Assets\Img\Cards\dj.svg">
 			<ExcludeFromSingleFile>true</ExcludeFromSingleFile>
 			<CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
 		</Content>
@@ -33,7 +41,15 @@
 			<ExcludeFromSingleFile>true</ExcludeFromSingleFile>
 			<CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
 		</Content>
-		<Content Include="..\Yugen.Apps.Web\wwwroot\assets\img\cards\mosaic.png" Link="Assets\Img\Cards\mosaic.png">
+		<Content Include="..\Yugen.Apps.Web\wwwroot\assets\img\cards\LinksCatalog.png" Link="Assets\Img\Cards\LinksCatalog.png">
+			<ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+			<CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+		</Content>
+		<Content Include="..\Yugen.Apps.Web\wwwroot\assets\img\cards\mosaic.svg" Link="Assets\Img\Cards\mosaic.svg">
+			<ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+			<CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+		</Content>
+		<Content Include="..\Yugen.Apps.Web\wwwroot\assets\img\cards\SC2Helper.svg" Link="Assets\Img\Cards\SC2Helper.svg">
 			<ExcludeFromSingleFile>true</ExcludeFromSingleFile>
 			<CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
 		</Content>

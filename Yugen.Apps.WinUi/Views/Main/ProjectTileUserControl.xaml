@@ -15,7 +15,7 @@
         <DataTemplate x:Key="AccentLinkDataTemplate"
                       x:DataType="local:LinkObservableObject">
             <Button Command="{StaticResource LaunchXamlUICommand}"
-                    CommandParameter="{x:Bind Href}"
+                    CommandParameter="{x:Bind Href, Mode=OneWay}"
                     ToolTipService.ToolTip="{x:Bind Description, Mode=OneWay}">
                 <Grid>
                     <Grid.ColumnDefinitions>
@@ -35,7 +35,7 @@
         <DataTemplate x:Key="DefaultLinkDataTemplate"
                       x:DataType="local:LinkObservableObject">
             <Button Command="{StaticResource LaunchXamlUICommand}"
-                    CommandParameter="{x:Bind Href}"
+                    CommandParameter="{x:Bind Href, Mode=OneWay}"
                     ToolTipService.ToolTip="{x:Bind Description, Mode=OneWay}">
                 <ImageIcon Width="20"
                            localXaml:ThemeAwareIcon.IconId="{x:Bind Type, Mode=OneWay}" />
@@ -48,7 +48,6 @@
     </UserControl.Resources>
 
     <Grid x:Name="TileRoot"
-          MinWidth="320"
           Background="{ThemeResource CardBackgroundFillColorDefaultBrush}"
           BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}"
           BorderThickness="1"
@@ -57,50 +56,73 @@
             <RowDefinition />
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
 
-        <Grid Padding="16,12"
-              AutomationProperties.Name="{x:Bind Project.Title, Mode=OneWay}"
-              ColumnSpacing="16">
+        <Grid Grid.Column="1"
+              AutomationProperties.Name="{x:Bind Project.Title, Mode=OneWay}">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
-                <RowDefinition />
+                <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto" />
                 <ColumnDefinition />
+                <ColumnDefinition Width="Auto" />
             </Grid.ColumnDefinitions>
 
-            <Image x:Name="TileImage"
-                   Grid.RowSpan="3"
-                   MaxWidth="96"
-                   VerticalAlignment="Top"
-                   Source="{x:Bind Project.ImageSrc, Mode=OneWay}"
-                   Stretch="Uniform" />
-
-            <TextBlock Grid.Column="1"
-                       Margin="0,0,16,4"
+            <TextBlock Margin="0,16,4,4"
                        Style="{StaticResource SubtitleTextBlockStyle}"
                        Text="{x:Bind Project.Title, Mode=OneWay}" />
 
             <TextBlock Grid.Row="1"
-                       Grid.Column="1"
-                       Margin="0,0,16,0"
+                       Margin="0,0,4,4"
                        Foreground="{ThemeResource AccentTextFillColorPrimaryBrush}"
                        Style="{StaticResource CaptionTextBlockStyle}"
-                       Text="{x:Bind Project.Caption, Mode=OneWay}" />
+                       Text="{x:Bind Project.Caption, Mode=OneWay}"
+                       Visibility="{x:Bind Project.HasCaption, Mode=OneWay}" />
 
             <TextBlock Grid.Row="2"
-                       Grid.Column="1"
-                       MaxWidth="240"
-                       Margin="0,4,0,0"
+                       Grid.ColumnSpan="2"
+                       Margin="0,0,16,16"
+                       HorizontalTextAlignment="Left"
+                       MaxLines="3"
                        Text="{x:Bind Project.Description, Mode=OneWay}"
                        TextTrimming="CharacterEllipsis"
                        TextWrapping="WrapWholeWords"
                        ToolTipService.ToolTip="{x:Bind Project.Description, Mode=OneWay}" />
+
+            <Border Grid.RowSpan="3"
+                    Grid.Column="1"
+                    Width="42"
+                    Margin="16,0,16,0"
+                    Padding="0,12"
+                    HorizontalAlignment="Right"
+                    VerticalAlignment="Top"
+                    Background="{ThemeResource SolidBackgroundFillColorSecondaryBrush}"
+                    BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}"
+                    BorderThickness="1,0,1,1"
+                    CornerRadius="0,0,12,12"
+                    ToolTipService.ToolTip="{x:Bind Project.OrgDisplayName, Mode=OneWay}"
+                    Visibility="{x:Bind Project.HasOrg, Mode=OneWay}">
+                <ImageIcon Width="24"
+                           HorizontalAlignment="Center"
+                           VerticalAlignment="Bottom"
+                           localXaml:ThemeAwareIcon.IconId="{x:Bind Project.Org, Mode=OneWay}" />
+            </Border>
         </Grid>
 
+        <Image x:Name="TileImage"
+               MaxWidth="96"
+               Margin="16"
+               VerticalAlignment="Top"
+               Source="{x:Bind Project.ImageSrc, Mode=OneWay}"
+               Stretch="Uniform" />
+
         <Border Grid.Row="1"
+                Grid.ColumnSpan="2"
                 Padding="16,12"
                 Background="{ThemeResource CardBackgroundFillColorSecondaryBrush}">
             <ItemsRepeater ItemTemplate="{StaticResource LinkDataTemplateSelector}"

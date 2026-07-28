@@ -4,10 +4,11 @@
     "Type": "Store",
     "Projects": [
       {
-        "ImageSrc": "dj.png",
+        "ImageSrc": "dj.svg",
         "Title": "Yugen DJ",
         "Caption": "Music",
         "Description": "A simple, fast, clean but powerful free and open source DJ app that support 2 sound cards!",
+
         "Links": [
           {
             "Type": "Store",
@@ -23,7 +24,7 @@
         ]
       },
       {
-        "ImageSrc": "mosaic.png",
+        "ImageSrc": "mosaic.svg",
         "Title": "Yugen Mosaic",
         "Caption": "Photo & video",
         "Description": "Yugen Mosaic is a free app that creates digital art pictures based on your own images. With it, you can use an unlimited amount of images, to create a photo mosaic which is an image composed of many tiled photos. or you can create some \"Ascii\" \"Art\", this graphic design technique will recreate your pictures with a set of printable characters pieced together. Yugen is an awareness of the universe that triggers emotional responses too deep and powerful for words, and that is just what your art will do with a little help from Yugen Mosaic!",
@@ -40,7 +41,54 @@
             "Description": "Open Yugen Mosaic repo on GitHub."
           }
         ]
+      },
+      {
+        "ImageSrc": "SC2Helper.svg",
+        "Title": "SC2 Helper",
+        "Caption": "Books & reference",
+        "Description": "A StarCraft II Companion App.\nProvides information about the current season, like MMR range per league, GM Leaderboard, Map pool. As well as important intel about units and their stats.",
+        "Links": [
+          {
+            "Type": "Store",
+            "Value": "9PMRJKKNPFJH",
+            "CommandText": "Microsoft Store",
+            "Description": "Open SC2 Helper in the Microsoft Store"
+          }
+        ]
+      },
+      {
+        "ImageSrc": "FontCatalog.svg",
+        "Title": "Font Catalog",
+        "Caption": "Productivity",
+        "Description": "Browse, preview, install, and manage every font on your PC — plus Google Fonts and your own imported files — in one fast, beautiful app built for Windows.",
+        "Org": "LCTWorks",
+        "OrgDisplayName": "LCTWorks app",
+        "Links": [
+          {
+            "Type": "Store",
+            "Value": "9NSB2NP5VRP9",
+            "CommandText": "Microsoft Store",
+            "Description": "Open Font Catalog in the Microsoft Store"
+          }
+        ]
+      },
+      {
+        "ImageSrc": "LinksCatalog.png",
+        "Title": "Links Catalog",
+        "Caption": "Utilities & tools",
+        "Description": "Links Catalog is a clean, modern app for saving, organizing, and revisiting the links that matter to you. Built natively for Windows 11 (with native ARM64 support), it turns scattered bookmarks into a well-organized personal catalog./nGroup your links into collections, sort them by category, and find anything instantly with full-text search across all your links. Every link can show a rich web preview generated from the page itself, so your catalog is visual and easy to scan rather than a plain list of URLs.",
+        "Org": "LCTWorks",
+        "OrgDisplayName": "LCTWorks app",
+        "Links": [
+          {
+            "Type": "Store",
+            "Value": "9NTS84XKLQX0",
+            "CommandText": "Microsoft Store",
+            "Description": "Open Links Catalog in the Microsoft Store"
+          }
+        ]
       }
+
     ]
   },
   {
@@ -56,6 +104,7 @@
           {
             "Type": "GitHub",
             "Value": "yugen-apps/yugen-home-budget",
+            "CommandText": "Github Repo",
             "Description": "Open Yugen Home Budget repo on GitHub."
           }
         ]

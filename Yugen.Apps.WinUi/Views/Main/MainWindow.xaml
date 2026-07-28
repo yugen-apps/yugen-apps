@@ -119,14 +119,17 @@
                           Padding="0,8">
                 <ItemsRepeater ItemsSource="{x:Bind ViewModel.SelectedCategory.Projects, Mode=OneWay}">
                     <ItemsRepeater.Layout>
-                        <UniformGridLayout MinColumnSpacing="16"
+                        <UniformGridLayout ItemsJustification="Start"
+                                           ItemsStretch="Fill"
+                                           MinColumnSpacing="16"
+                                           MinItemWidth="360"
                                            MinRowSpacing="16" />
                     </ItemsRepeater.Layout>
 
                     <ItemsRepeater.ItemTemplate>
                         <DataTemplate x:DataType="local:ProjectObservableObject">
                             <local:ProjectTileUserControl LaunchCommand="{StaticResource Launch2XamlUICommand}"
-                                                          Project="{x:Bind}" />
+                                                          Project="{x:Bind Mode=OneWay}" />
                         </DataTemplate>
                     </ItemsRepeater.ItemTemplate>
                 </ItemsRepeater>

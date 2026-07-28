@@ -12,5 +12,9 @@ public class ProjectDto
 
     public List<LinkDto> Links { get; set; }
 
+    public string Org { get; set; }
+
+    public string OrgDisplayName { get; set; }
+
     public string Title { get; set; }
 }
