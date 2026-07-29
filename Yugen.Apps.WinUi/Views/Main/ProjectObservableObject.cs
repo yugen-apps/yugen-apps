@@ -20,9 +20,17 @@ public partial class ProjectObservableObject : ObservableObject
 
     public string Description => _model.Description;
 
+    public bool HasCaption => !string.IsNullOrWhiteSpace(Caption);
+
+    public bool HasOrg => !string.IsNullOrWhiteSpace(Org);
+
     public string ImageSrc { get; }
 
     public List<LinkObservableObject> Links { get; }
+
+    public string Org => _model.Org;
+
+    public string OrgDisplayName => string.IsNullOrWhiteSpace(_model.OrgDisplayName) ? _model.Org : _model.OrgDisplayName;
 
     public string Title => _model.Title;
 }
