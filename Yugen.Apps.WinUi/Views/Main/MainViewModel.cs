@@ -19,8 +19,6 @@ public partial class MainViewModel : ObservableObject
         _projectsService = projectsService;
     }
 
-    public string WindowTitle { get; } = "Yugen Apps";
-
     [ObservableProperty]
     public partial List<CategoryObservableObject> AllCategories { get; set; } = [];
 
@@ -28,39 +26,18 @@ public partial class MainViewModel : ObservableObject
     public partial CategoryObservableObject SelectedCategory { get; set; }
 
     [ObservableProperty]
-    public partial bool IsPopupOpen { get; set; }
+    public partial WebPreviewViewModel WebPreview { get; set; } = new();
 
-    [ObservableProperty]
-    public partial Uri WebViewSource { get; set; } = BlankPage;
-
-    public static Uri BlankPage => new("about:blank");
-
-    [RelayCommand]
-    private async Task Load()
-    {
-        var filePath = $"{Package.Current.InstalledLocation.Path}\\Assets\\Data\\projects.json";
-        var categoryDtos = _projectsService.GetFromPath(filePath);
-        AllCategories = categoryDtos.Select(x => x.ToCategoryObservableObject()).ToList();
-        SelectedCategory = AllCategories[0];
-    }
+    public string WindowTitle { get; } = "Yugen Apps";
 
     [RelayCommand]
     private async Task LaunchAsync(object href)
     {
         try
-        {              
-
-            if (Uri.TryCreate(href as string, UriKind.RelativeOrAbsolute, out var uri))
+        {
+            if (href is string url)
             {
-                WebViewSource = uri;
-                if (WebViewSource.Scheme == "https")
-                {
-                    IsPopupOpen = true;
-                }
-                else
-                {
-                    await Launcher.LaunchUriAsync(WebViewSource);
-                }
+                WebPreview.Open(url);
             }
         }
         catch
@@ -69,9 +46,11 @@ public partial class MainViewModel : ObservableObject
     }
 
     [RelayCommand]
-    private async Task ClosePopup()
+    private async Task Load()
     {
-        WebViewSource = BlankPage;
-        IsPopupOpen = false;
+        var filePath = $"{Package.Current.InstalledLocation.Path}\\Assets\\Data\\projects.json";
+        var categoryDtos = _projectsService.GetFromPath(filePath);
+        AllCategories = categoryDtos.Select(x => x.ToCategoryObservableObject()).ToList();
+        SelectedCategory = AllCategories[0];
     }
 }

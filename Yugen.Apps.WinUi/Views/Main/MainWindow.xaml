@@ -37,6 +37,15 @@
             </interactivity:EventTriggerBehavior>
         </interactivity:Interaction.Behaviors>
 
+        <!--  Used as a reference for Web preview popup sizing and positioning  -->
+        <Rectangle x:Name="PopupDimensionsReference"
+                   Grid.RowSpan="5"
+                   HorizontalAlignment="Stretch"
+                   VerticalAlignment="Stretch"
+                   Fill="Transparent"
+                   SizeChanged="PopupDimensionsReference_SizeChanged"
+                   StrokeThickness="0" />
+
         <TitleBar x:Name="AppTitleBar"
                   Title="{x:Bind ViewModel.WindowTitle}"
                   Grid.Row="0"
@@ -136,24 +145,102 @@
             </ScrollViewer>
         </Grid>
 
-        <Popup Grid.Row="1"
-               Grid.RowSpan="4"
-               HorizontalAlignment="Center"
-               VerticalAlignment="Top"
-               IsOpen="{x:Bind ViewModel.IsPopupOpen, Mode=OneWay}">
-            <StackPanel Background="{ThemeResource AcrylicBackgroundFillColorDefaultBrush}"
-                        BorderBrush="{ThemeResource SurfaceStrokeColorDefaultBrush}"
-                        BorderThickness="1"
-                        CornerRadius="{StaticResource OverlayCornerRadius}">
-                <WebView2 Width="800"
-                          Height="600"
-                          Source="{x:Bind ViewModel.WebViewSource, Mode=OneWay}" />
+        <Popup x:Name="WebPreviewPopup"
+               Grid.RowSpan="6"
+               HorizontalAlignment="Stretch"
+               Closed="WebPreviewPopup_Closed"
+               IsLightDismissEnabled="False"
+               IsOpen="{x:Bind ViewModel.WebPreview.IsWebPreviewOpened, Mode=OneWay}"
+               Opened="WebPreviewPopup_Opened">
+            <Border x:Name="WebPreviewPopupContent"
+                    Background="{ThemeResource ContentDialogSmokeFill}"
+                    CornerRadius="8"
+                    KeyDown="WebPreviewPopup_KeyDown">
+                <Grid Margin="24,48,24,24"
+                      Background="{ThemeResource AcrylicBackgroundFillColorBaseBrush}"
+                      CornerRadius="8">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Grid Margin="16,0"
+                          Padding="16"
+                          ColumnSpacing="24">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
 
-                <Button Command="{x:Bind ViewModel.ClosePopupCommand}"
-                        Content="Close" />
-                <Button Content="Copy Link" />
-                <Button Content="Open In Browser" />
-            </StackPanel>
+                        <Border Width="16"
+                                Height="16"
+                                CornerRadius="2">
+                            <Image Source="{x:Bind ViewModel.WebPreview.FaviconImage, Mode=OneWay}" />
+                        </Border>
+
+                        <Border Grid.Column="1">
+                            <TextBlock VerticalAlignment="Center"
+                                       MaxLines="1"
+                                       Text="{x:Bind ViewModel.WebPreview.WebTitle, Mode=OneWay}"
+                                       TextTrimming="CharacterEllipsis"
+                                       TextWrapping="NoWrap" />
+                        </Border>
+                        <StackPanel Grid.Column="2"
+                                    Orientation="Horizontal"
+                                    Spacing="8">
+                            <Button Background="Transparent"
+                                    BorderThickness="0"
+                                    Command="{x:Bind ViewModel.WebPreview.LaunchExternalCommand}"
+                                    ToolTipService.ToolTip="Open in external browser">
+                                <ic:FluentIcon Icon="Open" />
+                            </Button>
+                            <AppBarSeparator />
+                            <Button Background="Transparent"
+                                    BorderThickness="0"
+                                    Command="{x:Bind ViewModel.WebPreview.CloseWebPreviewCommand}"
+                                    ToolTipService.ToolTip="Close">
+                                <ic:FluentIcon Icon="Dismiss" />
+                            </Button>
+                        </StackPanel>
+                    </Grid>
+                    <Grid Grid.Row="1"
+                          Margin="4"
+                          CornerRadius="8">
+                        <WebView2 Loaded="{x:Bind ViewModel.WebPreview.WebView2Loaded}"
+                                  NavigationCompleted="{x:Bind ViewModel.WebPreview.WebView2NavigationCompleted}"
+                                  NavigationStarting="{x:Bind ViewModel.WebPreview.WebView2NavigationStarting}"
+                                  Source="{x:Bind ViewModel.WebPreview.WebPreviewSource, Mode=TwoWay}" />
+                    </Grid>
+
+                    <Border Grid.Row="1"
+                            Grid.RowSpan="2"
+                            Background="{ThemeResource AcrylicBackgroundFillColorDefaultBrush}"
+                            Visibility="{x:Bind ViewModel.WebPreview.ErrorLoadingWebPreview, Mode=OneWay}">
+                        <StackPanel HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    Orientation="Vertical"
+                                    Spacing="8">
+                            <ic:FluentIcon FontSize="48"
+                                           Icon="Warning"
+                                           IconSize="Size48"
+                                           IconVariant="Color" />
+                            <TextBlock Text="Error navigating to your link."
+                                       TextAlignment="Center" />
+                            <Button Margin="0,24"
+                                    HorizontalAlignment="Center"
+                                    Command="{x:Bind ViewModel.WebPreview.ReloadCommand}"
+                                    Content="Try again" />
+                        </StackPanel>
+                    </Border>
+                    <ProgressBar Grid.Row="1"
+                                 Margin="8,0"
+                                 HorizontalAlignment="Stretch"
+                                 VerticalAlignment="Top"
+                                 IsIndeterminate="True"
+                                 Visibility="{x:Bind ViewModel.WebPreview.IsWebPreviewLoading, Mode=OneWay}" />
+                </Grid>
+            </Border>
         </Popup>
     </Grid>
 </Window>

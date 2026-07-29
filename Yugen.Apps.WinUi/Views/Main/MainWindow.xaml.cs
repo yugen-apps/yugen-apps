@@ -19,18 +19,45 @@ public sealed partial class MainWindow : Window
 
     public MainViewModel ViewModel { get; }
 
-    //private void WebView2_CoreWebView2Initialized(WebView2 sender, CoreWebView2InitializedEventArgs args)
-    //{
-    //	WebView2.CoreWebView2.NewWindowRequested += CoreWebView2_NewWindowRequested;
-    //}
+    #region WebPreview dimension and position management
 
-    //private void CoreWebView2_NewWindowRequested(object sender, CoreWebView2NewWindowRequestedEventArgs args)
-    //{
-    //	args.Handled = true;
-    //	// No need to wait for the launcher to finish sending the URI to the browser
-    //	// before we allow the WebView2 in our app to continue.
-    //	_ = Windows.System.Launcher.LaunchUriAsync(new Uri(args.Uri));
-    //	// LaunchUriAsync is the WinRT API for launching a URI.
-    //	// Another option not involving WinRT might be System.Diagnostics.Process.Start(args.Uri);
-    //}
+    private void PopupDimensionsReference_SizeChanged(object _, SizeChangedEventArgs __)
+        => PopupDimensionsReferenceSizeChanged();
+
+    private void PopupDimensionsReferenceSizeChanged()
+    {
+        if (ViewModel?.WebPreview.LoadWebView2UI != true)
+        {
+            return;
+        }
+
+        var containerWidth = PopupDimensionsReference.ActualWidth;
+        var containerHeight = PopupDimensionsReference.ActualHeight;
+
+        WebPreviewPopupContent.Width = containerWidth;
+        WebPreviewPopupContent.Height = containerHeight;
+
+        WebPreviewPopup.HorizontalOffset = 0;
+        WebPreviewPopup.VerticalOffset = 0;
+    }
+
+    private void WebPreviewPopup_Closed(object _, object __)
+            => ViewModel?.WebPreview.CloseWebPreviewCommand?.Execute(default);
+
+    private void WebPreviewPopup_KeyDown(object _, Microsoft.UI.Xaml.Input.KeyRoutedEventArgs e)
+    {
+        if (e.Key == Windows.System.VirtualKey.Escape)
+        {
+            ViewModel?.WebPreview.CloseWebPreviewCommand?.Execute(default);
+            e.Handled = true;
+        }
+    }
+
+    private void WebPreviewPopup_Opened(object sender, object __)
+    {
+        PopupDimensionsReferenceSizeChanged();
+        WebPreviewPopupContent.Focus(FocusState.Programmatic);
+    }
+
+    #endregion WebPreview dimension and position management
 }
