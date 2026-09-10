@@ -1,0 +1,35 @@
+name: yugen-apps-web-cicd
+
+on:
+  push:
+    branches:
+      - preview/*
+      - release/*
+    # paths:
+    #   - 'Yugen.Apps.Web/**'
+  workflow_dispatch:
+
+permissions:
+  id-token: write
+  contents: read
+
+jobs:
+  setup_stage:
+    uses: yugen-apps/yugen-templates/.github/workflows/setup.yml@main
+
+  build_web_app_stage:    
+    uses: yugen-apps/yugen-templates/.github/workflows/build-dotnet-publish.yml@main
+    needs: [ setup_stage ]
+    with:
+      project_name: "Yugen.Apps.Web"
+      project_version: "${{ needs.setup_stage.outputs.major_minor_patch }}"
+
+  deploy_web_app_stage:
+    uses: yugen-apps/yugen-templates/.github/workflows/deploy-azure-static-web-app.yml@main
+    needs: [ build_web_app_stage ]
+    secrets:
+      azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN }}
+      gh_token: ${{ secrets.GITHUB_TOKEN }}
+    with:
+      artifact_name: "Yugen.Apps.Web"
+      environment_name: "PRD"

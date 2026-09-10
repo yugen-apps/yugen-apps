@@ -1,0 +1,39 @@
+@inherits LayoutComponentBase
+
+<MudThemeProvider Theme="@_theme" IsDarkMode="_isDarkMode" />
+<MudPopoverProvider />
+<MudDialogProvider />
+<MudSnackbarProvider />
+
+<MudLayout>
+    <MudMainContent Class="pa-4">
+        <MudGrid>
+            <MudItem xs="2">
+            </MudItem>
+            <MudItem xs="8">
+                <Header />
+            </MudItem>
+            <MudItem xs="2">
+            </MudItem>
+            
+            <MudItem xs="2">
+            </MudItem>
+            <MudItem xs="8">
+                @Body
+            </MudItem>
+            <MudItem xs="2">
+            </MudItem>
+            
+            <MudItem xs="2">
+            </MudItem>
+            <MudItem xs="8">
+                <FooterMenu />
+            </MudItem>
+            <MudItem xs="2">
+                <MudIconButton Color="Color.Inherit"
+                               Icon="@(DarkLightModeButtonIcon)"
+                               OnClick="@DarkModeToggle" />
+            </MudItem>
+        </MudGrid>
+    </MudMainContent>
+</MudLayout>

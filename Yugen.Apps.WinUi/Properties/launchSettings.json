@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "Yugen.Apps.WinUi (Package)": {
+      "commandName": "MsixPackage"
+    },
+    "Yugen.Apps.WinUi (Unpackaged)": {
+      "commandName": "Project"
+    }
+  }
+}

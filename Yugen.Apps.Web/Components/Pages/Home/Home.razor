@@ -1,0 +1,65 @@
+@page "/"
+
+<PageTitle>Home</PageTitle>
+
+@if (categories == null)
+{
+    <MudProgressCircular Color="Color.Default"
+                         Indeterminate="true" />
+}
+else
+{
+    <MudTabs Centered="true"
+             Elevation="8">
+
+        @foreach (var category in categories)
+        {
+            <MudTabPanel Text="@category.Title"
+                         Icon="@IconHelper.TypeToIcon(category.Type)">
+                <MudGrid Class="mt-2">
+
+                    @foreach (var project in category.Projects)
+                    {
+                        <MudItem xs="12" sm="6" md="4">
+                            <MudCard Elevation="8">
+                                <MudCardHeader>
+                                    <CardHeaderContent>
+                                        <MudText Typo="Typo.body1">@project.Title</MudText>
+                                    </CardHeaderContent>
+                                    <CardHeaderActions>
+                                        @if (!string.IsNullOrWhiteSpace(project.Org))
+                                        {
+                                            <MudChip T="string" Color="Color.Primary">@project.Org</MudChip>
+                                        }
+                                    </CardHeaderActions>
+                                </MudCardHeader>
+                                <MudCardMedia Image="@project.ImageSrc"
+                                              Height="200" />
+                                <MudCardActions>
+                                    @foreach (var link in project.Links)
+                                    {
+                                        <MudIconButton Class="ma-1"
+                                                       Href="@link.Href"
+                                                       Icon="@IconHelper.TypeToIcon(link.Type)"
+                                                       Target="_blank"
+                                                       Variant="Variant.Filled" />
+                                    }
+
+                                    @if (!string.IsNullOrWhiteSpace(project.Description))
+                                    {
+                                        <MudIconButton OnClick="() => OpenDialogAsync(project.Description)"
+                                                       Class="ma-1"
+                                                       Icon="@Icons.Material.Filled.Info"
+                                                       Variant="Variant.Filled" />
+                                    }
+                                </MudCardActions>
+                            </MudCard>
+                        </MudItem>
+                    }
+
+                </MudGrid>
+            </MudTabPanel>
+        }
+
+    </MudTabs>
+}

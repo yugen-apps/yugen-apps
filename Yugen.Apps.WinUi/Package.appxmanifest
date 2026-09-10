@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Package xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10" xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest" xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10" xmlns:rescap="http://schemas.microsoft.com/appx/manifest/foundation/windows10/restrictedcapabilities" xmlns:systemai="http://schemas.microsoft.com/appx/manifest/systemai/windows10" IgnorableNamespaces="uap rescap systemai">
+  <Identity Name="30978emiliano84.ChannelMetro" Publisher="CN=0259C6DD-5945-485D-962F-C84F7531D6C4" Version="3.0.6.0" />
+  <mp:PhoneIdentity PhoneProductId="ab9ea6df-a0e2-4341-a8e0-b38b8d2d3415" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
+  <Properties>
+    <DisplayName>Yugen Apps</DisplayName>
+    <PublisherDisplayName>Yugen-Apps</PublisherDisplayName>
+    <Logo>Assets\Store\StoreLogo.png</Logo>
+  </Properties>
+  <Dependencies>
+    <TargetDeviceFamily Name="Windows.Universal" MinVersion="10.0.19041.0" MaxVersionTested="10.0.26226.0" />
+    <TargetDeviceFamily Name="Windows.Desktop" MinVersion="10.0.19041.0" MaxVersionTested="10.0.26226.0" />
+  </Dependencies>
+  <Resources>
+    <Resource Language="x-generate" />
+  </Resources>
+  <Applications>
+    <Application Id="App" Executable="$targetnametoken$.exe" EntryPoint="$targetentrypoint$">
+      <uap:VisualElements DisplayName="Yugen Apps" Description="Yugen.Apps" BackgroundColor="transparent" Square150x150Logo="Assets\Store\Square150x150Logo.png" Square44x44Logo="Assets\Store\Square44x44Logo.png">
+        <uap:DefaultTile Wide310x150Logo="Assets\Store\Wide310x150Logo.png" Square71x71Logo="Assets\Store\SmallTile.png" Square310x310Logo="Assets\Store\LargeTile.png" />
+        <uap:SplashScreen Image="Assets\Store\SplashScreen.png" />
+      </uap:VisualElements>
+    </Application>
+  </Applications>
+  <Capabilities>
+    <rescap:Capability Name="runFullTrust" />
+  </Capabilities>
+</Package>
