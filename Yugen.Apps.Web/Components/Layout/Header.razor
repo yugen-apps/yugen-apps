@@ -1,0 +1,14 @@
+﻿<MudPaper Elevation="8">
+    <MudCarousel Style="height:200px;"
+                 ItemsSource="@slides"
+                 ShowArrows="false"
+                 ShowBullets="false"
+                 EnableSwipeGesture="false">
+        <ItemTemplate>
+            <MudPaper Class="d-flex justify-center" style="height:100%">
+                <MudImage Src="@($"assets/img/headers/{context}.png")"
+                          Fluid="true" />
+            </MudPaper>
+        </ItemTemplate>
+    </MudCarousel>
+</MudPaper>

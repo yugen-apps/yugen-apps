@@ -1,0 +1,12 @@
+﻿@using System.Reflection
+
+<MudPaper Elevation="8"
+		  Class="pa-4">
+	<MudText Align="Align.Center"
+			 Color="Color.Default"
+			 Typo="Typo.body1">
+		@($"{Assembly.GetExecutingAssembly().GetName().Name} v{Assembly.GetExecutingAssembly().GetName().Version}")
+	</MudText>
+</MudPaper>
+
+
